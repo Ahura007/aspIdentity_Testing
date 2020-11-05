@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{B8E027C3-7AB2-4652-B4E2-B0C364255E9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{09588A3B-DE4C-43DC-AE44-F27D920EE0FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{9BBFE9FD-473B-486C-9DA7-C3A66EC86605}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotin.HostApi", "Dotin.HostApi\Dotin.HostApi.csproj", "{68BF7EDD-D3F4-410D-A288-943231D7631C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68BF7EDD-D3F4-410D-A288-943231D7631C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68BF7EDD-D3F4-410D-A288-943231D7631C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68BF7EDD-D3F4-410D-A288-943231D7631C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68BF7EDD-D3F4-410D-A288-943231D7631C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9BBFE9FD-473B-486C-9DA7-C3A66EC86605} = {09588A3B-DE4C-43DC-AE44-F27D920EE0FA}
+		{68BF7EDD-D3F4-410D-A288-943231D7631C} = {9BBFE9FD-473B-486C-9DA7-C3A66EC86605}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E68A59D-FB9D-4B7A-B65B-2B00A156177F}
+	EndGlobalSection
+EndGlobal
