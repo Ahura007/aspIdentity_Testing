@@ -6,7 +6,7 @@ namespace Dotin.HostApi.Domain.Service.Interface
 {
     public interface IUserService
     {
-        Task<bool> CreateAsync(ApplicationUserDto roleDto);
-        Task<List<ApplicationUserDto>> GetAll();
+        Task<ResponseDto<ApplicationUserDto>> CreateAsync(ApplicationUserDto roleDto);
+        Task<List<ApplicationUserDto>> GetAllAsync();
     }
 }

@@ -1,54 +1,54 @@
 ﻿using System.Threading.Tasks;
+using Dotin.HostApi.Domain.Service.Interface;
 using Dotin.HostApi.IdentityDto;
 using Dotin.HostApi.IdentityModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace Dotin.HostApi.IdentityControllers
 {
-
+    [AllowAnonymous]
     [ApiController]
     [Route("api/[controller]")]
 
     public class LoginController : ControllerBase
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger<LoginController> _logger;
+        private readonly ILoginService _loginService;
 
-        public LoginController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ILogger<LoginController> logger)
+        public LoginController(ILoginService loginService)
         {
-            _signInManager = signInManager;
-            _logger = logger;
+            _loginService = loginService;
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> OnPostAsync(LoginDto loginDto, string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(LoginDto loginDto, string returnUrl)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(loginDto.Username,
-                    loginDto.Password, loginDto.RememberMe, lockoutOnFailure: true);
-                if (result.Succeeded)
+                var loginResponse = await _loginService.Login(loginDto);
+
+
+                if (loginResponse.Result.SignInResult.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
 
-                if (result.RequiresTwoFactor)
+                if (loginResponse.Result.SignInResult.RequiresTwoFactor)
                 {
-                    return Redirect("./LoginWith2fa");
+                    return Redirect("two factor page");
                 }
 
-                if (result.IsLockedOut)
+                if (loginResponse.Result.SignInResult.IsLockedOut)
                 {
                     return BadRequest();
                 }
 
-                if (result.IsNotAllowed)
+                if (loginResponse.Result.SignInResult.IsNotAllowed)
                 {
                     return BadRequest();
                 }

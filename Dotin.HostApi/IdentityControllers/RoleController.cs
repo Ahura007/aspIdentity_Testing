@@ -18,7 +18,6 @@ namespace Dotin.HostApi.IdentityControllers
             _roleService = roleService;
         }
 
-
         [HttpGet]
         public async Task<List<ApplicationRoleDto>> GetAllAsync()
         {
@@ -27,15 +26,9 @@ namespace Dotin.HostApi.IdentityControllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(ApplicationRoleDto role)
+        public async Task<ResponseDto<ApplicationRoleDto>> CreateAsync(ApplicationRoleDto role)
         {
-            if (ModelState.IsValid)
-            {
-                await _roleService.CreateAsync(role);
-                return Ok();
-            }
-
-            return BadRequest();
+            return await _roleService.CreateAsync(role);
         }
     }
 }

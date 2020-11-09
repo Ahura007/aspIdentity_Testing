@@ -18,21 +18,16 @@ namespace Dotin.HostApi.IdentityControllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> OnPostAsync(ApplicationUserDto model)
+        public async Task<ResponseDto<ApplicationUserDto>> OnPostAsync(ApplicationUserDto model)
         {
-            if (ModelState.IsValid)
-            {
-                await _userService.CreateAsync(model);
-                return Ok();
-            }
-            return BadRequest();
+            return await _userService.CreateAsync(model);
         }
 
 
         [HttpGet]
         public async Task<List<ApplicationUserDto>> GetAllAsync()
         {
-            return await _userService.GetAll();
+            return await _userService.GetAllAsync();
         }
     }
 
