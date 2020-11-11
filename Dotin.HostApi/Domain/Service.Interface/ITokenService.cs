@@ -1,4 +1,4 @@
-﻿using Dotin.HostApi.IdentityModel;
+﻿using Dotin.HostApi.Domain.IdentityModel;
 
 namespace Dotin.HostApi.Domain.Service.Interface
 {

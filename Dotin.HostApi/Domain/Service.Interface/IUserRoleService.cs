@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Dotin.HostApi.IdentityDto;
+using Dotin.HostApi.Domain.IdentityDto;
 
 namespace Dotin.HostApi.Domain.Service.Interface
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace Dotin.HostApi.IdentityModel
+namespace Dotin.HostApi.Domain.IdentityModel
 {
     public class ApplicationUser : IdentityUser<int>
     {

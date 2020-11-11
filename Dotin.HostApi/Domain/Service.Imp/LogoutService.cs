@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Dotin.HostApi.Domain.IdentityModel;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.IdentityModel;
 using Microsoft.AspNetCore.Identity;
 
 namespace Dotin.HostApi.Domain.Service.Imp

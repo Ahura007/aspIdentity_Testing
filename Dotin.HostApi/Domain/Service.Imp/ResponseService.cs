@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Dotin.HostApi.Domain.IdentityDto;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.IdentityDto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,21 +8,40 @@ namespace Dotin.HostApi.Domain.Service.Imp
 {
     public class ResponseService<T> : IResponseService<T>
     {
-
-        public ResponseDto<T> Build(T source, IEnumerable<IdentityError> errors, ActionResult actionResult, string message)
+        private readonly ResponseDto<T> _result = new ResponseDto<T>();
+        public ResponseService()
         {
-            var res = new ResponseDto<T>();
+            _result.IdentityMessage = new List<string>();
+            _result.Result = new List<T>();
+        }
+        public ResponseDto<T> Response(IList<T> sourcesList, string message)
+        {
+            foreach (var source in sourcesList)
+            {
+                _result.Result.Add(source);
+            }
+            _result.ApplicationMessage = message;
+            return _result;
+        }
+
+        public ResponseDto<T> Response(T sources, IEnumerable<string> errors, string message)
+        {
             foreach (var error in errors)
             {
-                res.IdentityError.Add(error.Description);
-                res.IdentityCode.Add(error.Code);
+                _result.IdentityMessage.Add(error);
             }
 
-            res.Message = message;
-            res.ActionResult = actionResult;
-            res.Result = source;
+            _result.Result.Add(sources); 
+            _result.ApplicationMessage = message;
+            return _result;
+        }
 
-            return res;
+
+        public ResponseDto<T> Response(T sources, string message)
+        {
+            _result.Result.Add(sources);
+            _result.ApplicationMessage = message;
+            return _result;
         }
     }
 }

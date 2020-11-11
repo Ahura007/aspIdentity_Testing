@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
+using Dotin.HostApi.Domain.IdentityDto;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.IdentityDto;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dotin.HostApi.IdentityControllers
+namespace Dotin.HostApi.Controller.IdentityControllers
 {
     [ApiController]
     [Route("api/[controller]")]

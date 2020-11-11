@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Dotin.HostApi.IdentityDto
+namespace Dotin.HostApi.Domain.IdentityDto
 {
     public class ApplicationUserDto
     {

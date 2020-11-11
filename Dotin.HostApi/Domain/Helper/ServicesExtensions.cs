@@ -1,16 +1,16 @@
 ﻿using System;
 using AutoMapper;
+using Dotin.HostApi.Db.IdentityDbContext;
+using Dotin.HostApi.Domain.IdentityModel;
 using Dotin.HostApi.Domain.Mapper;
 using Dotin.HostApi.Domain.Service.Imp;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.IdentityDbContext;
-using Dotin.HostApi.IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Dotin.HostApi.Helper
+namespace Dotin.HostApi.Domain.Helper
 {
     public static class ServicesExtensions
     {
@@ -40,20 +40,22 @@ namespace Dotin.HostApi.Helper
                 options.Password.RequiredLength = 1;
                 options.Password.RequiredUniqueChars = 1;
 
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(500);
                 options.Lockout.MaxFailedAccessAttempts = 1000000;
                 options.Lockout.AllowedForNewUsers = false;
 
-                options.User.AllowedUserNameCharacters =
-                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
             });
 
             services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IRoleService, RoleService>();
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<ILogoutService, LogoutService>();
+            services.AddTransient(typeof(IResponseService<>), typeof(ResponseService<>));
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRoleService, UserRoleService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddSingleton(provider =>
             {

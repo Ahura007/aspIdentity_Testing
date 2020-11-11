@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Dotin.HostApi.Domain.IdentityDto;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.IdentityDto;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dotin.HostApi.IdentityControllers
+namespace Dotin.HostApi.Controller.IdentityControllers
 {
 
     [ApiController]
@@ -19,9 +18,9 @@ namespace Dotin.HostApi.IdentityControllers
         }
 
         [HttpGet]
-        public async Task<List<ApplicationRoleDto>> GetAllAsync()
+        public async Task<ResponseDto<ApplicationRoleDto>> GetAllAsync()
         {
-            return await _roleService.GetAll();
+            return await _roleService.GetAllAsync();
         }
 
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dotin.HostApi.IdentityDto
+namespace Dotin.HostApi.Domain.IdentityDto
 {
     public class ApplicationRoleDto
     {

@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Dotin.HostApi.Domain.IdentityDto;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.IdentityDto;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dotin.HostApi.IdentityControllers
+namespace Dotin.HostApi.Controller.IdentityControllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -25,7 +23,7 @@ namespace Dotin.HostApi.IdentityControllers
 
 
         [HttpGet]
-        public async Task<List<ApplicationUserDto>> GetAllAsync()
+        public async Task<ResponseDto<ApplicationUserDto>> GetAllAsync()
         {
             return await _userService.GetAllAsync();
         }

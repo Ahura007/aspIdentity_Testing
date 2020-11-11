@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Dotin.HostApi.IdentityDto;
+using Dotin.HostApi.Domain.IdentityDto;
 
 namespace Dotin.HostApi.Domain.Service.Interface
 {
@@ -9,7 +9,7 @@ namespace Dotin.HostApi.Domain.Service.Interface
     {
         Task<ResponseDto<ApplicationRoleDto>> CreateAsync(ApplicationRoleDto roleDto);
         Task<bool> IsExistsAsync(ApplicationRoleDto roleDto);
-        Task<List<ApplicationRoleDto>> GetAllAsync();
-        Task<ApplicationRoleDto> GetByIdAsync(int id);
+        Task<ResponseDto<ApplicationRoleDto>> GetAllAsync();
+        Task<ResponseDto<ApplicationRoleDto>> GetByIdAsync(int id);
     }
 }

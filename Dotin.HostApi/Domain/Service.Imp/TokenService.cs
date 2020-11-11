@@ -2,9 +2,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Dotin.HostApi.Domain.Helper;
+using Dotin.HostApi.Domain.IdentityModel;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.Helper;
-using Dotin.HostApi.IdentityModel;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 

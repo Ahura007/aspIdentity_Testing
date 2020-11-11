@@ -1,5 +1,5 @@
-﻿using Dotin.HostApi.IdentityDto;
-using Dotin.HostApi.IdentityModel;
+﻿using Dotin.HostApi.Domain.IdentityDto;
+using Dotin.HostApi.Domain.IdentityModel;
 
 namespace Dotin.HostApi.Domain.Mapper
 {

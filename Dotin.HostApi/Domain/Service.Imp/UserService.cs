@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Dotin.HostApi.Domain.Helper;
+using Dotin.HostApi.Domain.IdentityDto;
+using Dotin.HostApi.Domain.IdentityModel;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.Helper;
-using Dotin.HostApi.IdentityDto;
-using Dotin.HostApi.IdentityModel;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dotin.HostApi.Domain.Service.Imp
@@ -32,15 +32,15 @@ namespace Dotin.HostApi.Domain.Service.Imp
             var result = await _userManager.CreateAsync(user, roleDto.Password);
 
             if (result.Succeeded)
-                return _responseService.Build(roleDto, result.Errors, new OkResult(), UserMessage.Success);
-            return _responseService.Build(roleDto, result.Errors, new BadRequestResult(), UserMessage.Failed);
+                return _responseService.Response(roleDto, result.Errors.Select(c => c.Description), UserMessage.Success);
+            return _responseService.Response(roleDto, result.Errors.Select(c => c.Description), UserMessage.Failed);
         }
 
-        public async Task<List<ApplicationUserDto>> GetAllAsync()
+        public async Task<ResponseDto<ApplicationUserDto>> GetAllAsync()
         {
             var getAllUser = await _userManager.Users.ToListAsync();
             var allUser = _mapper.Map<List<ApplicationUser>, List<ApplicationUserDto>>(getAllUser);
-            return allUser;
+            return  _responseService.Response(allUser, UserMessage.Success);
         }
     }
 }

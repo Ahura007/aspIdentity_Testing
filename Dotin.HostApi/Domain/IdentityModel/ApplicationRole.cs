@@ -1,8 +1,7 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace Dotin.HostApi.IdentityModel
+namespace Dotin.HostApi.Domain.IdentityModel
 {
     public class ApplicationRole : IdentityRole<int>
     {

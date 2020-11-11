@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dotin.HostApi.Domain.Helper;
+using Dotin.HostApi.Domain.IdentityDto;
+using Dotin.HostApi.Domain.IdentityModel;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.Helper;
-using Dotin.HostApi.IdentityDto;
-using Dotin.HostApi.IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,12 +29,32 @@ namespace Dotin.HostApi.Domain.Service.Imp
         {
             var response = new LoginResultDto();
             response.SignInResult = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, loginDto.RememberMe, true);
+
+
             if (response.SignInResult.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(loginDto.Username);
-                response.Token = _tokenService.GenerateJwtToken(user);
+                response.AccessToken = _tokenService.GenerateJwtToken(user);
+                response.ReturnUrl = "redirect home";
+                return _responseService.Response(response, UserMessage.SuccessLogin);
             }
-            return _responseService.Build(response, new List<IdentityError>(), new OkResult(), UserMessage.SuccessLogin);
+
+            if (response.SignInResult.RequiresTwoFactor)
+            {
+                response.ReturnUrl = "two factore redirect";
+                return _responseService.Response(response, UserMessage.RequiresTwoFactor);
+            }
+
+            if (response.SignInResult.IsLockedOut)
+            {
+                response.ReturnUrl = "lock page show";
+                return _responseService.Response(response, UserMessage.IsLockedOut);
+            }
+
+
+            response.ReturnUrl = "not allowed page ";
+            return _responseService.Response(response, UserMessage.IsNotAllowed);
+
         }
     }
 }

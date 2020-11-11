@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Dotin.HostApi.Domain.Helper;
+using Dotin.HostApi.Domain.IdentityDto;
+using Dotin.HostApi.Domain.IdentityModel;
 using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.Helper;
-using Dotin.HostApi.IdentityDto;
-using Dotin.HostApi.IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,9 +32,13 @@ namespace Dotin.HostApi.Domain.Service.Imp
             if (isExistsRole)
             {
                 var newRole = _mapper.Map<ApplicationRoleDto, ApplicationRole>(roleDto);
-                await _roleManager.CreateAsync(newRole);
+                var result = await _roleManager.CreateAsync(newRole);
+
+                if (result.Succeeded)
+                    return _responseService.Response(roleDto, result.Errors.Select(c => c.Description), UserMessage.Success);
+                return _responseService.Response(roleDto, result.Errors.Select(c => c.Description), UserMessage.Failed);
             }
-            return _responseService.Build(roleDto, new List<IdentityError>(), new OkResult(), UserMessage.Success);
+            return _responseService.Response(roleDto, UserMessage.Duplicated);
         }
 
         public async Task<bool> IsExistsAsync(ApplicationRoleDto roleDto)
@@ -45,18 +49,18 @@ namespace Dotin.HostApi.Domain.Service.Imp
             return false;
         }
 
-        public async Task<List<ApplicationRoleDto>> GetAllAsync()
+        public async Task<ResponseDto<ApplicationRoleDto>> GetAllAsync()
         {
             var getAllRole = await _roleManager.Roles.ToListAsync();
             var allRole = _mapper.Map<List<ApplicationRole>, List<ApplicationRoleDto>>(getAllRole);
-            return allRole;
+            return _responseService.Response(allRole, UserMessage.Success);
         }
 
-        public async Task<ApplicationRoleDto> GetByIdAsync(int id)
+        public async Task<ResponseDto<ApplicationRoleDto>> GetByIdAsync(int id)
         {
             var findRole = await _roleManager.Roles.FirstOrDefaultAsync(c => c.Id == id);
-            var newRole = _mapper.Map<ApplicationRole, ApplicationRoleDto>(findRole);
-            return newRole;
+            var role = _mapper.Map<ApplicationRole, ApplicationRoleDto>(findRole);
+            return _responseService.Response(role, UserMessage.Success);
         }
     }
 }

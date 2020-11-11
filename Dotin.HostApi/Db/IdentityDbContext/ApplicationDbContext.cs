@@ -1,8 +1,9 @@
-﻿using Dotin.HostApi.IdentityModel;
+﻿using Dotin.HostApi.Db.SeedData;
+using Dotin.HostApi.Domain.IdentityModel;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dotin.HostApi.IdentityDbContext
+namespace Dotin.HostApi.Db.IdentityDbContext
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
@@ -16,6 +17,14 @@ namespace Dotin.HostApi.IdentityDbContext
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUser");
             modelBuilder.Entity<ApplicationRole>().ToTable("AspNetRole");
+            modelBuilder.SeedData();
         }
     }
+
+
+
+
+
+
+
 }

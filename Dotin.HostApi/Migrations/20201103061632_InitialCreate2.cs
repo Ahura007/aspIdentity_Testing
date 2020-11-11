@@ -26,6 +26,8 @@ namespace Dotin.HostApi.Migrations
                 name: "LastName",
                 table: "AspNetUser",
                 nullable: true);
+
+        
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
