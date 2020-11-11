@@ -54,16 +54,16 @@ namespace Dotin.HostApi.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "dbbb77eb-7f3c-4de2-8700-e96e12f656e6",
-                            CreateDateTime = new DateTime(2020, 11, 10, 18, 7, 10, 906, DateTimeKind.Local).AddTicks(7185),
+                            ConcurrencyStamp = "98adad0b-8fca-4b24-9bf7-9ac78ed408fe",
+                            CreateDateTime = new DateTime(2020, 11, 10, 18, 14, 59, 279, DateTimeKind.Local).AddTicks(5404),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "53be72d2-8189-4729-8c68-6e9f90ce62c2",
-                            CreateDateTime = new DateTime(2020, 11, 10, 18, 7, 10, 906, DateTimeKind.Local).AddTicks(9023),
+                            ConcurrencyStamp = "7ef8eb04-8be9-4477-bb04-d73396025cd4",
+                            CreateDateTime = new DateTime(2020, 11, 10, 18, 14, 59, 279, DateTimeKind.Local).AddTicks(7660),
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -152,8 +152,8 @@ namespace Dotin.HostApi.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            BirthDate = new DateTime(1991, 11, 10, 18, 7, 10, 898, DateTimeKind.Local).AddTicks(3822),
-                            ConcurrencyStamp = "33abe884-1d1a-45c1-9175-2c500926a4a3",
+                            BirthDate = new DateTime(1991, 11, 10, 18, 14, 59, 271, DateTimeKind.Local).AddTicks(3583),
+                            ConcurrencyStamp = "c47f4f7e-7f5a-44ae-b97b-ce74806d0fe1",
                             Email = "mehdi_4294@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -169,8 +169,8 @@ namespace Dotin.HostApi.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            BirthDate = new DateTime(1985, 11, 10, 18, 7, 10, 904, DateTimeKind.Local).AddTicks(3713),
-                            ConcurrencyStamp = "4fe59cad-35d3-4bd9-abd4-345d90ca04b4",
+                            BirthDate = new DateTime(1985, 11, 10, 18, 14, 59, 276, DateTimeKind.Local).AddTicks(5188),
+                            ConcurrencyStamp = "a379005e-1e75-4af6-93bf-49eb91627b91",
                             Email = "mehdi_4294@yahoo.com",
                             EmailConfirmed = false,
                             FirstName = "user",

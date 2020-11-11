@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Dotin.HostApi.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreate1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ApplicationRole",
+                name: "AspNetRole",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -20,11 +20,11 @@ namespace Dotin.HostApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplicationRole", x => x.Id);
+                    table.PrimaryKey("PK_AspNetRole", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ApplicationUser",
+                name: "AspNetUser",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -43,12 +43,14 @@ namespace Dotin.HostApi.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
                     NationalCode = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true)
+                    BirthDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplicationUser", x => x.Id);
+                    table.PrimaryKey("PK_AspNetUser", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -65,9 +67,9 @@ namespace Dotin.HostApi.Migrations
                 {
                     table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_ApplicationRole_RoleId",
+                        name: "FK_AspNetRoleClaims_AspNetRole_RoleId",
                         column: x => x.RoleId,
-                        principalTable: "ApplicationRole",
+                        principalTable: "AspNetRole",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -86,9 +88,9 @@ namespace Dotin.HostApi.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_ApplicationUser_UserId",
+                        name: "FK_AspNetUserClaims_AspNetUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "ApplicationUser",
+                        principalTable: "AspNetUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -106,9 +108,9 @@ namespace Dotin.HostApi.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
-                        name: "FK_AspNetUserLogins_ApplicationUser_UserId",
+                        name: "FK_AspNetUserLogins_AspNetUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "ApplicationUser",
+                        principalTable: "AspNetUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -124,15 +126,15 @@ namespace Dotin.HostApi.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_ApplicationRole_RoleId",
+                        name: "FK_AspNetUserRoles_AspNetRole_RoleId",
                         column: x => x.RoleId,
-                        principalTable: "ApplicationRole",
+                        principalTable: "AspNetRole",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_ApplicationUser_UserId",
+                        name: "FK_AspNetUserRoles_AspNetUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "ApplicationUser",
+                        principalTable: "AspNetUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -150,36 +152,54 @@ namespace Dotin.HostApi.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
-                        name: "FK_AspNetUserTokens_ApplicationUser_UserId",
+                        name: "FK_AspNetUserTokens_AspNetUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "ApplicationUser",
+                        principalTable: "AspNetUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRole",
+                columns: new[] { "Id", "ConcurrencyStamp", "CreateDateTime", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { 1, "98adad0b-8fca-4b24-9bf7-9ac78ed408fe", new DateTime(2020, 11, 10, 18, 14, 59, 279, DateTimeKind.Local).AddTicks(5404), "Admin", "ADMIN" },
+                    { 2, "7ef8eb04-8be9-4477-bb04-d73396025cd4", new DateTime(2020, 11, 10, 18, 14, 59, 279, DateTimeKind.Local).AddTicks(7660), "User", "USER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUser",
+                columns: new[] { "Id", "AccessFailedCount", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NationalCode", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { 1, 0, new DateTime(1991, 11, 10, 18, 14, 59, 271, DateTimeKind.Local).AddTicks(3583), "c47f4f7e-7f5a-44ae-b97b-ce74806d0fe1", "mehdi_4294@yahoo.com", false, "Admin", "Admini", false, null, "1234567891", null, null, null, "+989352810284", false, null, false, "Admin" },
+                    { 2, 0, new DateTime(1985, 11, 10, 18, 14, 59, 276, DateTimeKind.Local).AddTicks(5188), "a379005e-1e75-4af6-93bf-49eb91627b91", "mehdi_4294@yahoo.com", false, "user", "useri", false, null, "1234567891", null, null, null, "+989352810284", false, null, false, "user" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
-                table: "ApplicationRole",
+                table: "AspNetRole",
                 column: "NormalizedName",
                 unique: true,
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoleClaims_RoleId",
+                table: "AspNetRoleClaims",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                table: "ApplicationUser",
+                table: "AspNetUser",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                table: "ApplicationUser",
+                table: "AspNetUser",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoleClaims_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -215,10 +235,10 @@ namespace Dotin.HostApi.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ApplicationRole");
+                name: "AspNetRole");
 
             migrationBuilder.DropTable(
-                name: "ApplicationUser");
+                name: "AspNetUser");
         }
     }
 }

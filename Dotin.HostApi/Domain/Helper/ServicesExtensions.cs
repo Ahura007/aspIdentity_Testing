@@ -5,6 +5,7 @@ using Dotin.HostApi.Domain.IdentityModel;
 using Dotin.HostApi.Domain.Mapper;
 using Dotin.HostApi.Domain.Service.Imp;
 using Dotin.HostApi.Domain.Service.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,7 @@ namespace Dotin.HostApi.Domain.Helper
         public static void AddService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllers();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")));
 
