@@ -62,5 +62,18 @@ namespace Dotin.HostApi.Domain.Service.Imp
             var role = _mapper.Map<ApplicationRole, ApplicationRoleDto>(findRole);
             return _responseService.Response(role, UserMessage.Success);
         }
+
+        public async Task<List<ApplicationRole>> GetByNameAsync(List<string> names)
+        {
+            var roles = new List<ApplicationRole>();
+            foreach (var roleName in names)
+            {
+                var role = await _roleManager.FindByNameAsync(roleName);
+                if (role != null)
+                    roles.Add(role);
+            }
+            return roles;
+        }
+
     }
 }

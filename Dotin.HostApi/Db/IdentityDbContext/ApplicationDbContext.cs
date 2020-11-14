@@ -1,4 +1,4 @@
-﻿using Dotin.HostApi.Db.SeedData;
+﻿using Dotin.HostApi.Db.Seed;
 using Dotin.HostApi.Domain.IdentityModel;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -20,11 +20,4 @@ namespace Dotin.HostApi.Db.IdentityDbContext
             modelBuilder.SeedData();
         }
     }
-
-
-
-
-
-
-
 }

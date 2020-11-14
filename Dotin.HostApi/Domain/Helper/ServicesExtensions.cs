@@ -10,18 +10,20 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Dotin.HostApi.Domain.Helper
 {
     public static class ServicesExtensions
     {
+   
+
         public static void AddService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllers();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")));
-
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
@@ -70,5 +72,7 @@ namespace Dotin.HostApi.Domain.Helper
                 return config.CreateMapper();
             });
         }
+
+      
     }
 }
