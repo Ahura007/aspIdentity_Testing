@@ -22,8 +22,9 @@ namespace Dotin.HostApi.Domain.Helper
         {
             services.AddControllers();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")));
+                options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")),ServiceLifetime.Transient);
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
@@ -55,7 +56,7 @@ namespace Dotin.HostApi.Domain.Helper
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<ILogoutService, LogoutService>();
-            services.AddTransient(typeof(IResponseService<>), typeof(ResponseService<>));
+            services.AddScoped(typeof(IResponseService<>), typeof(ResponseService<>));
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserRoleService, UserRoleService>();

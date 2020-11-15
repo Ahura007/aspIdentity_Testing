@@ -19,8 +19,8 @@ namespace Dotin.HostApi
         {
             CreateHostBuilder(args)
                 .Build()
-                .Seed()
-                .Run();
+                .Seed().GetAwaiter().GetResult()
+                .RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

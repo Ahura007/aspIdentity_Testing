@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Dotin.HostApi.Db.IdentityDbContext;
 using Dotin.HostApi.Db.Seed.SeedData;
 using Dotin.HostApi.Domain.IdentityDto;
@@ -13,12 +14,12 @@ namespace Dotin.HostApi.Db.Seed
     public static class SeedService
     {
 
-        public static IHost Seed(this IHost host)
+        public static async Task<IHost> Seed(this IHost host)
         {
             try
             {
                 using var scope = host.Services.CreateScope();
-                MigrateDatabaseContext(scope.ServiceProvider);
+                await MigrateDatabaseContext(scope.ServiceProvider);
             }
             catch (Exception exception)
             {
@@ -28,12 +29,12 @@ namespace Dotin.HostApi.Db.Seed
             return host;
         }
 
-        private static void MigrateDatabaseContext(IServiceProvider serviceProvider)
+        private static async Task MigrateDatabaseContext(IServiceProvider serviceProvider)
         {
             var applicationDbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
             var userRoleService = serviceProvider.GetRequiredService<IUserRoleService>();
 
-            applicationDbContext.Database.Migrate();
+            await applicationDbContext.Database.MigrateAsync();
 
             var users = UserSeedData.CreateUser();
             var roles = RoleSeedData.CreateRole();
@@ -49,8 +50,8 @@ namespace Dotin.HostApi.Db.Seed
                 RoleNames = roles.Where(c => c.Id == 2).Select(c => c.Name).ToList()
             };
 
-            userRoleService.UserRoleAsync(adminRole);
-            userRoleService.UserRoleAsync(userRole);
+            await userRoleService.UserRoleAsync(adminRole);
+            await userRoleService.UserRoleAsync(userRole);
         }
 
 
