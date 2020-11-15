@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dotin.HostApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201110144500_InitialCreate1")]
+    [Migration("20201115105811_InitialCreate1")]
     partial class InitialCreate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,24 +51,6 @@ namespace Dotin.HostApi.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRole");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ConcurrencyStamp = "98adad0b-8fca-4b24-9bf7-9ac78ed408fe",
-                            CreateDateTime = new DateTime(2020, 11, 10, 18, 14, 59, 279, DateTimeKind.Local).AddTicks(5404),
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ConcurrencyStamp = "7ef8eb04-8be9-4477-bb04-d73396025cd4",
-                            CreateDateTime = new DateTime(2020, 11, 10, 18, 14, 59, 279, DateTimeKind.Local).AddTicks(7660),
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Dotin.HostApi.Domain.IdentityModel.ApplicationUser", b =>
@@ -148,42 +130,6 @@ namespace Dotin.HostApi.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AccessFailedCount = 0,
-                            BirthDate = new DateTime(1991, 11, 10, 18, 14, 59, 271, DateTimeKind.Local).AddTicks(3583),
-                            ConcurrencyStamp = "c47f4f7e-7f5a-44ae-b97b-ce74806d0fe1",
-                            Email = "mehdi_4294@yahoo.com",
-                            EmailConfirmed = false,
-                            FirstName = "Admin",
-                            LastName = "Admini",
-                            LockoutEnabled = false,
-                            NationalCode = "1234567891",
-                            PhoneNumber = "+989352810284",
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "Admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AccessFailedCount = 0,
-                            BirthDate = new DateTime(1985, 11, 10, 18, 14, 59, 276, DateTimeKind.Local).AddTicks(5188),
-                            ConcurrencyStamp = "a379005e-1e75-4af6-93bf-49eb91627b91",
-                            Email = "mehdi_4294@yahoo.com",
-                            EmailConfirmed = false,
-                            FirstName = "user",
-                            LastName = "useri",
-                            LockoutEnabled = false,
-                            NationalCode = "1234567891",
-                            PhoneNumber = "+989352810284",
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "user"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

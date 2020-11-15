@@ -26,27 +26,22 @@ namespace Dotin.HostApi.Domain.Service.Imp
         }
 
 
-        public async Task<ResponseDto<ApplicationUserDto>> CreateAsync(ApplicationUserDto userDto)
+        public async Task<ResponseDto<ApplicationUserDto>> CreateAsync(ApplicationUserDto userDto,string password)
         {
             var user = _mapper.Map<ApplicationUserDto, ApplicationUser>(userDto);
-
-            var isDuplicate = _userManager.FindByNameAsync(userDto.UserName);
-            if(isDuplicate != null)
-                return _responseService.Response(userDto,new List<string>(){ "Duplicated User" }, UserMessage.Duplicated);
-
-
-            var result = await _userManager.CreateAsync(user, userDto.Password);
+            var result = await _userManager.CreateAsync(user, password);
 
             if (result.Succeeded)
                 return _responseService.Response(userDto, result.Errors.Select(c => c.Description), UserMessage.Success);
             return _responseService.Response(userDto, result.Errors.Select(c => c.Description), UserMessage.Failed);
         }
 
+
         public async Task<ResponseDto<ApplicationUserDto>> GetAllAsync()
         {
             var getAllUser = await _userManager.Users.ToListAsync();
             var allUser = _mapper.Map<List<ApplicationUser>, List<ApplicationUserDto>>(getAllUser);
-            return  _responseService.Response(allUser, UserMessage.Success);
+            return _responseService.Response(allUser, UserMessage.Success);
         }
     }
 }

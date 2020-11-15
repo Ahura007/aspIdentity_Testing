@@ -1,39 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dotin.HostApi.Domain.IdentityDto;
 using Dotin.HostApi.Domain.IdentityModel;
+using Dotin.HostApi.Domain.Service.Interface;
 
 namespace Dotin.HostApi.Db.Seed.SeedData
 {
     public class UserSeedData
     {
-        public static List<ApplicationUser> CreateUser()
+        public static List<ApplicationUserDto> CreateUser()
         {
-            var users = new List<ApplicationUser>
+            var users = new List<ApplicationUserDto>
             {
-                new ApplicationUser
+                new ApplicationUserDto
                 {
-                    Id = 1,
                     Email = "mehdi_4294@yahoo.com",
                     BirthDate = DateTime.Now.AddYears(-29),
                     NationalCode = "1234567891",
                     FirstName = "Admin",
                     LastName = "Admini",
                     PhoneNumber = "+989352810284",
-                    UserName = "Admin"
+                    UserName = "Admin",
                 },
-                new ApplicationUser
+                new ApplicationUserDto
                 {
-                    Id = 2,
                     Email = "mehdi_4294@yahoo.com",
                     BirthDate = DateTime.Now.AddYears(-35),
                     NationalCode = "1234567891",
                     FirstName = "user",
                     LastName = "useri",
                     PhoneNumber = "+989352810284",
-                    UserName = "user"
+                    UserName = "user",
                 }
             };
             return users;
         }
+
+ 
     }
 }

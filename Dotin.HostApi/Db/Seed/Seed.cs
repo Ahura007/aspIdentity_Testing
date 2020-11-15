@@ -8,11 +8,7 @@ namespace Dotin.HostApi.Db.Seed
     {
         public static void SeedData(this ModelBuilder modelBuilder)
         {
-            var users = UserSeedData.CreateUser();
-            var roles = RoleSeedData.CreateRole();
-
-            modelBuilder.Entity<ApplicationUser>().HasData(users);
-            modelBuilder.Entity<ApplicationRole>().HasData(roles);
+  
         }
     }
 }

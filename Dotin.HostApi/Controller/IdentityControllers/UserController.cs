@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Dotin.HostApi.Domain.IdentityDto;
 using Dotin.HostApi.Domain.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +17,17 @@ namespace Dotin.HostApi.Controller.IdentityControllers
         }
 
         [HttpPost]
-        public async Task<ResponseDto<ApplicationUserDto>> OnPostAsync(ApplicationUserDto model)
+        public async Task<ResponseDto<ApplicationUserDto>> OnPostAsync(ApplicationUserDto user)
         {
-            return await _userService.CreateAsync(model);
+            try
+            {
+                return await _userService.CreateAsync(user, user.Password);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
 

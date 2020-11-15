@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 
 namespace Dotin.HostApi.Domain.IdentityModel
 {
@@ -9,10 +10,5 @@ namespace Dotin.HostApi.Domain.IdentityModel
         public string LastName { get; set; }
         public string NationalCode { get; set; }
         public DateTime BirthDate { get; set; }
- 
-    
-     
- 
-
     }
 }

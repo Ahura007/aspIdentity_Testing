@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dotin.HostApi.Db.IdentityDbContext;
+using Dotin.HostApi.Db.Seed.Migration.Step1;
 using Dotin.HostApi.Db.Seed.SeedData;
 using Dotin.HostApi.Domain.IdentityDto;
+using Dotin.HostApi.Domain.IdentityModel;
 using Dotin.HostApi.Domain.Service.Interface;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,7 +18,7 @@ namespace Dotin.HostApi.Db.Seed
     public static class SeedService
     {
 
-        public static async Task<IHost> Seed(this IHost host)
+        public static async Task<IHost> SeedAsync(this IHost host)
         {
             try
             {
@@ -33,25 +37,17 @@ namespace Dotin.HostApi.Db.Seed
         {
             var applicationDbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
             var userRoleService = serviceProvider.GetRequiredService<IUserRoleService>();
+            var useService = serviceProvider.GetRequiredService<IUserService>();
+            var roleService = serviceProvider.GetRequiredService<IRoleService>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+
+
+            await BaseData.Initialize(userRoleService, useService, roleService, userManager);
 
             await applicationDbContext.Database.MigrateAsync();
 
-            var users = UserSeedData.CreateUser();
-            var roles = RoleSeedData.CreateRole();
 
-            var adminRole = new AddUserRoleDto()
-            {
-                UserId = users.FirstOrDefault(c => c.Id == 1)?.Id.ToString(),
-                RoleNames = roles.Where(c => c.Id == 1).Select(c => c.Name).ToList()
-            };
-            var userRole = new AddUserRoleDto()
-            {
-                UserId = users.FirstOrDefault(c => c.Id == 2)?.Id.ToString(),
-                RoleNames = roles.Where(c => c.Id == 2).Select(c => c.Name).ToList()
-            };
-
-            await userRoleService.UserRoleAsync(adminRole);
-            await userRoleService.UserRoleAsync(userRole);
         }
 
 

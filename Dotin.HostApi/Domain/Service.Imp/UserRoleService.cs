@@ -28,18 +28,7 @@ namespace Dotin.HostApi.Domain.Service.Imp
         public async Task<ResponseDto<ApplicationUserDto>> UserRoleAsync(AddUserRoleDto userRoleDto)
         {
             var currentUser = await _userManager.FindByIdAsync(userRoleDto.UserId);
-            var roles = await _roleService.GetByNameAsync(userRoleDto.RoleNames);
-            var allUserRole = await _userManager.GetRolesAsync(currentUser);
-            IdentityResult roleResult = new IdentityResult();
-
-            foreach (var role in roles)
-            {
-                if (!allUserRole.Contains(role.Name))
-                {
-                    roleResult = await _userManager.AddToRolesAsync(currentUser, userRoleDto.RoleNames);
-                }
-            }
-
+            var roleResult = await _userManager.AddToRolesAsync(currentUser, userRoleDto.RoleNames);
 
             var userDto = _mapper.Map<ApplicationUser, ApplicationUserDto>(currentUser);
 

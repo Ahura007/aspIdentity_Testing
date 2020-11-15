@@ -159,24 +159,6 @@ namespace Dotin.HostApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRole",
-                columns: new[] { "Id", "ConcurrencyStamp", "CreateDateTime", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { 1, "98adad0b-8fca-4b24-9bf7-9ac78ed408fe", new DateTime(2020, 11, 10, 18, 14, 59, 279, DateTimeKind.Local).AddTicks(5404), "Admin", "ADMIN" },
-                    { 2, "7ef8eb04-8be9-4477-bb04-d73396025cd4", new DateTime(2020, 11, 10, 18, 14, 59, 279, DateTimeKind.Local).AddTicks(7660), "User", "USER" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUser",
-                columns: new[] { "Id", "AccessFailedCount", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NationalCode", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { 1, 0, new DateTime(1991, 11, 10, 18, 14, 59, 271, DateTimeKind.Local).AddTicks(3583), "c47f4f7e-7f5a-44ae-b97b-ce74806d0fe1", "mehdi_4294@yahoo.com", false, "Admin", "Admini", false, null, "1234567891", null, null, null, "+989352810284", false, null, false, "Admin" },
-                    { 2, 0, new DateTime(1985, 11, 10, 18, 14, 59, 276, DateTimeKind.Local).AddTicks(5188), "a379005e-1e75-4af6-93bf-49eb91627b91", "mehdi_4294@yahoo.com", false, "user", "useri", false, null, "1234567891", null, null, null, "+989352810284", false, null, false, "user" }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRole",
