@@ -23,8 +23,8 @@ namespace Dotin.HostApi.Domain.Helper
             services.AddControllers();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")),ServiceLifetime.Transient);
+            services.AddDbContextPool<ApplicationDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")), 256);
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
