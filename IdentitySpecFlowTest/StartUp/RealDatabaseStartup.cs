@@ -1,15 +1,13 @@
-﻿using System.Linq;
-using Dotin.HostApi.DataAccess.Db.IdentityDbContext;
+﻿using Dotin.HostApi.DataAccess.Db.IdentityDbContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace IdentityUnitTest.StartUp
+namespace IdentitySpecFlowTest.StartUp
 {
-    public class InMemoryDatabaseStartup<T> : WebApplicationFactory<T> where T : class
+    public class RealDatabaseStartup<T> : WebApplicationFactory<T> where T : class
     {
         public IHost HostWeb { get; set; }
 
@@ -32,16 +30,6 @@ namespace IdentityUnitTest.StartUp
 
             builder.ConfigureServices(services =>
             {
-                var removeDbContext =
-                    services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<ApplicationDbContext>));
-                if (removeDbContext != null)
-                    services.Remove(removeDbContext);
-
-                services.AddDbContextPool<ApplicationDbContext>(options =>
-                {
-                    options.UseInMemoryDatabase("InMemoryDb");
-                }, 256);
-
                 var sp = services.BuildServiceProvider();
 
                 using (var scope = sp.CreateScope())

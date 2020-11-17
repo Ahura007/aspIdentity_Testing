@@ -1,10 +1,13 @@
 ﻿using System;
 using AutoMapper;
-using Dotin.HostApi.Db.IdentityDbContext;
-using Dotin.HostApi.Domain.IdentityModel;
+using Dotin.HostApi.DataAccess.Db.IdentityDbContext;
 using Dotin.HostApi.Domain.Mapper;
+using Dotin.HostApi.Domain.Mapper.Identity;
+using Dotin.HostApi.Domain.Model;
 using Dotin.HostApi.Domain.Service.Imp;
+using Dotin.HostApi.Domain.Service.Imp.Identity;
 using Dotin.HostApi.Domain.Service.Interface;
+using Dotin.HostApi.Domain.Service.Interface.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +19,6 @@ namespace Dotin.HostApi.Domain.Helper
 {
     public static class ServicesExtensions
     {
-   
-
         public static void AddService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllers();

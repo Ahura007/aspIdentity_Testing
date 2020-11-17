@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Dotin.HostApi.Db.IdentityDbContext;
+using Dotin.HostApi.DataAccess.Db.IdentityDbContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;

@@ -1,0 +1,26 @@
+﻿
+1. Make Them Short
+2. Make Them Fast
+3. Make Them Deterministic
+4. Don’t Repeat Yourself
+5. Prefer Composition Over Inheritance
+6. Don’t Ignore Tests
+7. Test Your Tests
+8. Name Your Tests Well
+9. One Logical Assertion Per Test
+10. Design Your Tests
+
+
+Fast. It is not uncommon for mature projects to have thousands of unit tests. Unit tests should take very little time to run. Milliseconds.
+Isolated. Unit tests are standalone, can be run in isolation, and have no dependencies on any outside factors such as a file system or database.
+Repeatable. Running a unit test should be consistent with its results, that is, it always returns the same result if you do not change anything in between runs.
+Self-Checking. The test should be able to automatically detect if it passed or failed without any human interaction.
+Timely. A unit test should not take a disproportionately long time to write compared to the code being
+
+
+Why unit test?
+1. Less time performing functional tests
+2. Protection against regression
+3. Executable documentation
+4. Less coupled code
+5. Highest code coverage

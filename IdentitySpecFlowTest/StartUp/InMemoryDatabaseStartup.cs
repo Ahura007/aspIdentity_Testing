@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace IdentityUnitTest.StartUp
+namespace IdentitySpecFlowTest.StartUp
 {
     public class InMemoryDatabaseStartup<T> : WebApplicationFactory<T> where T : class
     {

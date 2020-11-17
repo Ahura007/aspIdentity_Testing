@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Dotin.HostApi.Domain.IdentityDto;
+using Dotin.HostApi.Domain.Dto.Identity;
 using Dotin.HostApi.Domain.Service.Interface;
+using Dotin.HostApi.Domain.Service.Interface.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dotin.HostApi.Controller.IdentityControllers
