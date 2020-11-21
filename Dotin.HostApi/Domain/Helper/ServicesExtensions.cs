@@ -4,6 +4,7 @@ using Dotin.HostApi.DataAccess.Db.IdentityDbContext;
 using Dotin.HostApi.Domain.Mapper;
 using Dotin.HostApi.Domain.Mapper.Identity;
 using Dotin.HostApi.Domain.Model;
+using Dotin.HostApi.Domain.Model.Identity;
 using Dotin.HostApi.Domain.Service.Imp;
 using Dotin.HostApi.Domain.Service.Imp.Identity;
 using Dotin.HostApi.Domain.Service.Interface;

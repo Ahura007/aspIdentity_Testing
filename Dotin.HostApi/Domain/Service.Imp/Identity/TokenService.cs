@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using Dotin.HostApi.Domain.Helper;
 using Dotin.HostApi.Domain.Model;
+using Dotin.HostApi.Domain.Model.Identity;
 using Dotin.HostApi.Domain.Service.Interface.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

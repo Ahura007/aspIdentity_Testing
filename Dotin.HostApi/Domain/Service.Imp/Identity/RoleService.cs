@@ -5,6 +5,7 @@ using AutoMapper;
 using Dotin.HostApi.Domain.Dto.Identity;
 using Dotin.HostApi.Domain.Helper;
 using Dotin.HostApi.Domain.Model;
+using Dotin.HostApi.Domain.Model.Identity;
 using Dotin.HostApi.Domain.Service.Interface.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

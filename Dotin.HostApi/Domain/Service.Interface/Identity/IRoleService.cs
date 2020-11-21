@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Dotin.HostApi.Domain.Dto.Identity;
 using Dotin.HostApi.Domain.Model;
+using Dotin.HostApi.Domain.Model.Identity;
 
 namespace Dotin.HostApi.Domain.Service.Interface.Identity
 {

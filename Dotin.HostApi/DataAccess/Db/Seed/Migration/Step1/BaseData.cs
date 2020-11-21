@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Dotin.HostApi.DataAccess.Db.Seed.SeedData;
 using Dotin.HostApi.Domain.Dto.Identity;
 using Dotin.HostApi.Domain.Model;
+using Dotin.HostApi.Domain.Model.Identity;
 using Dotin.HostApi.Domain.Service.Interface.Identity;
 using Microsoft.AspNetCore.Identity;
 
