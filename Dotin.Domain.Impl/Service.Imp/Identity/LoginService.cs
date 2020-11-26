@@ -1,13 +1,11 @@
 ﻿using System.Threading.Tasks;
 using Dotin.Domain.Impl.Helper;
-using Dotin.HostApi.Domain.Dto.Identity;
-using Dotin.HostApi.Domain.Helper;
-using Dotin.HostApi.Domain.Model;
-using Dotin.HostApi.Domain.Model.Identity;
-using Dotin.HostApi.Domain.Service.Interface.Identity;
+using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.Domain.Model.Model.Identity;
+using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Identity;
 
-namespace Dotin.HostApi.Domain.Service.Imp.Identity
+namespace Dotin.Domain.Impl.Service.Imp.Identity
 {
     public class LoginService : ILoginService
     {

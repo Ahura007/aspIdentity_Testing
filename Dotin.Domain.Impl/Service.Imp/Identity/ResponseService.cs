@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Dotin.HostApi.Domain.Dto.Identity;
-using Dotin.HostApi.Domain.Service.Interface.Identity;
+using Dotin.Domain.Interface.Service.Interface.Identity;
 
-namespace Dotin.HostApi.Domain.Service.Imp.Identity
+namespace Dotin.Domain.Impl.Service.Imp.Identity
 {
     public class ResponseService<T> : IResponseService<T>
     {

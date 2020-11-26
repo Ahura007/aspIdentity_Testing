@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Dotin.HostApi.Domain.Dto.Identity;
+using Dotin.Share.Dto.Identity;
 
-namespace Dotin.HostApi.DataAccess.Db.Seed.SeedData
+namespace Dotin.HostApi.Seed.SeedData
 {
     public class RoleSeedData
     {

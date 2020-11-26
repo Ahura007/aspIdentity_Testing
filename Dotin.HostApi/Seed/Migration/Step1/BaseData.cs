@@ -1,10 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Dotin.HostApi.DataAccess.Db.Seed.SeedData;
-using Dotin.HostApi.Domain.Dto.Identity;
-using Dotin.HostApi.Domain.Model;
-using Dotin.HostApi.Domain.Model.Identity;
-using Dotin.HostApi.Domain.Service.Interface.Identity;
+using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.HostApi.Seed.SeedData;
+using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace Dotin.HostApi.DataAccess.Db.Seed.Migration.Step1

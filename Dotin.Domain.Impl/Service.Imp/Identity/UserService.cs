@@ -1,7 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Dotin.Domain.Impl.Helper;
-using Dotin.HostApi.Domain.Model.Identity;
+using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.Domain.Model.Model.Identity;
+using Dotin.Share.Dto.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace Dotin.Domain.Impl.Service.Imp.Identity
 {

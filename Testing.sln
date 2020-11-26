@@ -25,13 +25,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotin.Domain.Model", "Dotin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_Share", "3_Share", "{9592AD1A-5B77-4AD8-AEB5-BAA28C42C719}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotin.Domain.Interface", "Dotin.Domain.Interface\Dotin.Domain.Interface.csproj", "{46775484-D748-4833-8848-8BA28D39B970}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotin.Domain.Interface", "Dotin.Domain.Interface\Dotin.Domain.Interface.csproj", "{46775484-D748-4833-8848-8BA28D39B970}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotin.Share", "Dotin.Share\Dotin.Share.csproj", "{900383F4-DD95-457E-9E16-AB0485AD6FD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotin.Share", "Dotin.Share\Dotin.Share.csproj", "{900383F4-DD95-457E-9E16-AB0485AD6FD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotin.DataAccess.Interface", "Dotin.DataAccess.Interface\Dotin.DataAccess.Interface.csproj", "{DED15399-AAB3-4CE8-A553-4F5F8434943A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotin.DataAccess.Interface", "Dotin.DataAccess.Interface\Dotin.DataAccess.Interface.csproj", "{DED15399-AAB3-4CE8-A553-4F5F8434943A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotin.DataAccess.EfImpl", "Dotin.DataAccess.EfImpl\Dotin.DataAccess.EfImpl.csproj", "{C56BF9E0-E7CD-46BB-BEB3-CBC36F74346A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotin.DataAccess.EfImpl", "Dotin.DataAccess.EfImpl\Dotin.DataAccess.EfImpl.csproj", "{C56BF9E0-E7CD-46BB-BEB3-CBC36F74346A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

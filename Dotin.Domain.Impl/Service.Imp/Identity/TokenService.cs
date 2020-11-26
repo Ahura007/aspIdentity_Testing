@@ -2,27 +2,31 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Dotin.HostApi.Domain.Helper;
-using Dotin.HostApi.Domain.Model;
-using Dotin.HostApi.Domain.Model.Identity;
-using Dotin.HostApi.Domain.Service.Interface.Identity;
+using AutoMapper;
+using Dotin.Domain.Impl.Helper.TokenSetting;
+using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.Domain.Model.Model.Identity;
+using Dotin.Share.Dto.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Dotin.HostApi.Domain.Service.Imp.Identity
+namespace Dotin.Domain.Impl.Service.Imp.Identity
 {
     public class TokenService : ITokenService
     {
 
         private readonly AppSettings _appSettings;
+        private readonly IMapper _mapper;
 
-        public TokenService(IOptions<AppSettings> appSettings)
+        public TokenService(IOptions<AppSettings> appSettings, IMapper mapper)
         {
+            _mapper = mapper;
             _appSettings = appSettings.Value;
         }
 
-        public string GenerateJwtToken(ApplicationUser user)
+        public string GenerateJwtToken(ApplicationUserDto userDto)
         {
+            var user = _mapper.Map<ApplicationUserDto, ApplicationUser>(userDto);
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor

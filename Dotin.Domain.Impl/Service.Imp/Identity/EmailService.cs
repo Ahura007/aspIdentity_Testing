@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Dotin.HostApi.Domain.Service.Interface.Identity;
+using Dotin.Domain.Interface.Service.Interface.Identity;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-namespace Dotin.HostApi.Domain.Service.Imp.Identity
+namespace Dotin.Domain.Impl.Service.Imp.Identity
 {
     public class EmailService: IEmailService
     {

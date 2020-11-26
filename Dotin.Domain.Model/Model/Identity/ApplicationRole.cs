@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace Dotin.Domain.Model.Model.Identity
 {

@@ -1,4 +1,4 @@
-﻿namespace Dotin.HostApi.Domain.Helper
+﻿namespace Dotin.Domain.Impl.Helper.TokenSetting
 {
     public class AppSettings
     {

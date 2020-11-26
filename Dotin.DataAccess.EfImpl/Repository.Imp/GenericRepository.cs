@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Dotin.DataAccess.EfImpl.Db.IdentityDbContext;
+using Dotin.DataAccess.Interface;
 using Dotin.HostApi.DataAccess.Repository.Interface;
 using Dotin.HostApi.Domain.Model.Application.Base;
 using Microsoft.EntityFrameworkCore;

@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain;
 using Dotin.HostApi.Domain.Model.Application;
-using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dotin.HostApi.Controller.Application

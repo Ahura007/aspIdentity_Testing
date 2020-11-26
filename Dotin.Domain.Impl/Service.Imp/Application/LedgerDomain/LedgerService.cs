@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Dotin;
+using Dotin.DataAccess.Interface.Repository.Interface.LedgerDb;
 using Dotin.Domain.Impl.Helper;
 using Dotin.Domain.Impl.Helper.ExceptionHandling;
+using Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain;
+using Dotin.Domain.Interface.Service.Interface.Identity;
 using Dotin.HostApi.DataAccess.Repository.Interface.LedgerDb;
-using Dotin.HostApi.Domain.Dto.Identity;
-using Dotin.HostApi.Domain.Helper;
 using Dotin.HostApi.Domain.Helper.Extension;
 using Dotin.HostApi.Domain.Model.Application;
-using Dotin.HostApi.Domain.Service.Interface.Application.LedgerDomain;
-using Dotin.HostApi.Domain.Service.Interface.Identity;
-using Microsoft.EntityFrameworkCore;
 
-namespace Dotin.HostApi.Domain.Service.Imp.Application.LedgerDomain
+namespace Domain.Impl.Service.Imp.Application.LedgerDomain
 {
     public class LedgerService : ILedgerService
     {

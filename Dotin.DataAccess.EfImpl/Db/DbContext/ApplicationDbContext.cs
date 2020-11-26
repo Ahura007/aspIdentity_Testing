@@ -1,11 +1,10 @@
 ﻿using Dotin.Domain.Model.Model.Application;
 using Dotin.Domain.Model.Model.Identity;
-using Dotin.HostApi.DataAccess.Db.Seed;
 using Dotin.HostApi.Domain.Model.Application;
-using Dotin.HostApi.Domain.Model.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dotin.DataAccess.EfImpl.Db.IdentityDbContext
+namespace Dotin.DataAccess.EfImpl.Db.DbContext
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {

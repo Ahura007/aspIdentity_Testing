@@ -3,15 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Dotin.Domain.Impl.Helper;
-using Dotin.HostApi.Domain.Dto.Identity;
-using Dotin.HostApi.Domain.Helper;
-using Dotin.HostApi.Domain.Model;
-using Dotin.HostApi.Domain.Model.Identity;
-using Dotin.HostApi.Domain.Service.Interface.Identity;
+using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.Domain.Model.Model.Identity;
+using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
-namespace Dotin.HostApi.Domain.Service.Imp.Identity
+namespace Dotin.Domain.Impl.Service.Imp.Identity
 {
     public class RoleService : IRoleService
     {
@@ -63,7 +60,7 @@ namespace Dotin.HostApi.Domain.Service.Imp.Identity
             return _responseService.Response(role, UserMessage.Success);
         }
 
-        public async Task<List<ApplicationRole>> GetByNameAsync(List<string> names)
+        public async Task<List<ApplicationRoleDto>> GetByNameAsync(List<string> names)
         {
             var roles = new List<ApplicationRole>();
             foreach (var roleName in names)
@@ -72,7 +69,7 @@ namespace Dotin.HostApi.Domain.Service.Imp.Identity
                 if (role != null)
                     roles.Add(role);
             }
-            return roles;
+            return null;
         }
 
     }

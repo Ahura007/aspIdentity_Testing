@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Dotin.Share.Dto.Identity;
 
 namespace Dotin.Domain.Interface.Service.Interface.Identity
 {

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Dotin.HostApi.Domain.Model.Application.Base;
 
-namespace Dotin.DataAccess.Interface.Repository.Interface
+namespace Dotin.DataAccess.Interface
 {
     public interface IGenericRepository<TEntity> where TEntity : Entity
     {

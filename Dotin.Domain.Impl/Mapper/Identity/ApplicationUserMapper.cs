@@ -1,8 +1,7 @@
-﻿using Dotin.HostApi.Domain.Dto.Identity;
-using Dotin.HostApi.Domain.Model;
-using Dotin.HostApi.Domain.Model.Identity;
+﻿using Dotin.Domain.Model.Model.Identity;
+using Dotin.Share.Dto.Identity;
 
-namespace Dotin.HostApi.Domain.Mapper.Identity
+namespace Dotin.Domain.Impl.Mapper.Identity
 {
     public class ApplicationUserMapper : AutoMapper.Profile
     {
