@@ -21,6 +21,10 @@ namespace Dotin.HostApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddControllers();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddService(Configuration);
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
         }

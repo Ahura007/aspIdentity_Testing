@@ -14,19 +14,24 @@ namespace Dotin.HostApi
 {
     public class Program
     {
+        //https://blog.dcube.fr/index.php/2019/09/05/generic-repository-unit-of-work-et-entity-framework/
+        //https://barnamenevisan.org/Articles/Article4824.html
+
+
+        public static IHost HostManager { get; set; }
         public static async Task Main(string[] args)
         {
-            var host = await CreateHostBuilder(args)
+            HostManager = await CreateHostBuilder(args)
                       .Build()
                       .SeedAsync();
 
-            await host.RunAsync();
+            await HostManager.RunAsync();
 
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                .ConfigureWebHostDefaults(configure: webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });

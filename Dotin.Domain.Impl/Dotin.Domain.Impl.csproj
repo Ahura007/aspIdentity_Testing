@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Helper\ExceptionHandling\" />
+    <Folder Include="Helper\Extension\" />
+    <Folder Include="Mapper\Application\" />
+    <Folder Include="Mapper\Identity\" />
+    <Folder Include="Service.Imp\Application\LedgerDomain\" />
+    <Folder Include="Service.Imp\Identity\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dotin.Domain.Model\Dotin.Domain.Model.csproj" />
+  </ItemGroup>
+
+</Project>
