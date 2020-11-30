@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Dotin.DataAccess.EfImpl.Db.DbContext;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Dotin.HostApi.Seed
+namespace Dotin.DataAccess.EfImpl.Seed
 {
     public static class SeedService
     {
@@ -26,7 +28,7 @@ namespace Dotin.HostApi.Seed
 
         private static async Task MigrateDatabaseContext(IServiceProvider serviceProvider)
         {
-            //var applicationDbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
+            var applicationDbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
             //var userRoleService = serviceProvider.GetRequiredService<IUserRoleService>();
             //var useService = serviceProvider.GetRequiredService<IUserService>();
             //var roleService = serviceProvider.GetRequiredService<IRoleService>();
@@ -36,7 +38,7 @@ namespace Dotin.HostApi.Seed
 
             //await BaseData.Initialize(userRoleService, useService, roleService, userManager);
 
-            //await applicationDbContext.Database.MigrateAsync();
+            await applicationDbContext.Database.MigrateAsync();
 
 
         }

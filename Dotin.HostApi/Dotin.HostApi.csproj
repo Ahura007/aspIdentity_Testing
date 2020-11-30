@@ -6,26 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dotin.Domain.Impl\Dotin.Domain.Impl.csproj" />
     <ProjectReference Include="..\Dotin.Domain.Interface\Dotin.Domain.Interface.csproj" />
+    <ProjectReference Include="..\Dotin.Infrastructure\Dotin.Infrastructure.csproj" />
     <ProjectReference Include="..\Dotin.Share\Dotin.Share.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Seed\Migration\Step1\" />
-    <Folder Include="Seed\SeedData\" />
   </ItemGroup>
 
 </Project>

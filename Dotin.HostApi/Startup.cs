@@ -1,7 +1,9 @@
+using Dotin.DataAccess.EfImpl.Db.DbContext;
 using Dotin.Domain.Impl.Helper.TokenSetting;
 using Dotin.Domain.Impl.Ioc;
 using Dotin.Domain.Interface;
 using Dotin.Domain.Model.Model.Identity;
+using Dotin.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,29 +28,9 @@ namespace Dotin.HostApi
         {
             services.AddControllers();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")));
-
-
-
-
-            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
-                {
-                    options.SignIn.RequireConfirmedAccount = false;
-                    options.SignIn.RequireConfirmedPhoneNumber = false;
-                    options.SignIn.RequireConfirmedEmail = false;
-                })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddSignInManager()
-                .AddDefaultTokenProviders();
-
-
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
-
-            DomainServices.AddDomainService(services, Configuration);
+            services.ServiceRegister(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,9 +1,8 @@
 using System;
+using Dotin.Domain.Impl.Helper;
+using Dotin.Domain.Interface.Service.Interface.Identity;
 using Dotin.HostApi;
-using Dotin.HostApi.Domain.Dto.Identity;
-using Dotin.HostApi.Domain.Helper;
-using Dotin.HostApi.Domain.Service.Interface;
-using Dotin.HostApi.Domain.Service.Interface.Identity;
+using Dotin.Share.Dto.Identity;
 using FluentAssertions;
 using IdentityUnitTest.Helper;
 using IdentityUnitTest.StartUp;

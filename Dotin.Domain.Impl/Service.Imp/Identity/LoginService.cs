@@ -27,7 +27,6 @@ namespace Dotin.Domain.Impl.Service.Imp.Identity
             var response = new LoginResultDto();
             response.SignInResult = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, loginDto.RememberMe, true);
 
-
             if (response.SignInResult.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(loginDto.Username);

@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Dotin.HostApi.DataAccess.Db.Seed;
-using Dotin.HostApi.Seed;
+
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,13 +17,13 @@ namespace Dotin.HostApi
         //https://blog.dcube.fr/index.php/2019/09/05/generic-repository-unit-of-work-et-entity-framework/
         //https://barnamenevisan.org/Articles/Article4824.html
 
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            var hostManager = await CreateHostBuilder(args)
-                       .Build()
-                       .SeedAsync();
+            var hostManager = CreateHostBuilder(args)
+                       .Build();
+            //           .SeedAsync();
 
-            await hostManager.RunAsync();
+            hostManager.Run();
 
         }
 

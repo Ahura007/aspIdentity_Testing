@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Dotin;
-using Dotin.DataAccess.Interface.Repository.Interface.LedgerDb;
+using Dotin.DataAccess.Interface;
+using Dotin.DataAccess.Interface.LedgerDb;
 using Dotin.Domain.Impl.Helper;
 using Dotin.Domain.Impl.Helper.ExceptionHandling;
 using Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain;
 using Dotin.Domain.Interface.Service.Interface.Identity;
-using Dotin.HostApi.DataAccess.Repository.Interface.LedgerDb;
+using Dotin.Domain.Model.Model.Application;
 using Dotin.HostApi.Domain.Helper.Extension;
-using Dotin.HostApi.Domain.Model.Application;
+using Dotin.Share.Dto.Application;
 
-namespace Domain.Impl.Service.Imp.Application.LedgerDomain
+namespace Dotin.Domain.Impl.Service.Imp.Application.LedgerDomain
 {
     public class LedgerService : ILedgerService
     {
@@ -32,12 +32,13 @@ namespace Domain.Impl.Service.Imp.Application.LedgerDomain
 
         public async Task<ResponseDto<LedgerDto>> AddAsync(LedgerDto ledgerDto)
         {
-       
+
             var ledger = _mapper.Map<LedgerDto, Ledger>(ledgerDto);
 
             var duplicateCode = await _legerRepository.ExistsAsync(c => c.Code == ledger.Code);
             if (duplicateCode)
-                throw new DuplicateException(UserMessage.Duplicated + " Code");
+                return _responseService.Response(ledgerDto,  UserMessage.Duplicated);
+
 
             var duplicateTitle = await _legerRepository.ExistsAsync(c => c.Title == ledger.Title);
             if (duplicateTitle)
@@ -61,10 +62,9 @@ namespace Domain.Impl.Service.Imp.Application.LedgerDomain
 
         public async Task<List<LedgerDto>> GetAllAsync()
         {
-            var allLedger = await _legerRepository.GetAll().ToListAsync();
+            var allLedger = await _legerRepository.GetAllAsync();
             var allLedgerDto = _mapper.Map<List<Ledger>, List<LedgerDto>>(allLedger);
             return allLedgerDto;
-            return null;
         }
     }
 }

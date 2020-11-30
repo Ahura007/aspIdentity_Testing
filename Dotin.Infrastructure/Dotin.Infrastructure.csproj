@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dotin.DataAccess.EfImpl\Dotin.DataAccess.EfImpl.csproj" />
+    <ProjectReference Include="..\Dotin.DataAccess.Interface\Dotin.DataAccess.Interface.csproj" />
+    <ProjectReference Include="..\Dotin.Domain.Impl\Dotin.Domain.Impl.csproj" />
+    <ProjectReference Include="..\Dotin.Domain.Interface\Dotin.Domain.Interface.csproj" />
+    <ProjectReference Include="..\Dotin.Domain.Model\Dotin.Domain.Model.csproj" />
+    <ProjectReference Include="..\Dotin.Share\Dotin.Share.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Dotin.Domain.Interface.Service.Interface.Identity;
 
 namespace Dotin.Domain.Impl.Service.Imp.Identity
@@ -8,7 +9,7 @@ namespace Dotin.Domain.Impl.Service.Imp.Identity
         private readonly ResponseDto<T> _result = new ResponseDto<T>();
         public ResponseService()
         {
-            _result.IdentityMessage = new List<string>();
+            _result.Message = new List<string>();
             _result.Result = new List<T>();
         }
         public ResponseDto<T> Response(IList<T> sourcesList, string message)
@@ -25,7 +26,7 @@ namespace Dotin.Domain.Impl.Service.Imp.Identity
         {
             foreach (var error in errors)
             {
-                _result.IdentityMessage.Add(error);
+                _result.Message.Add(error);
             }
 
             _result.Result.Add(sources); 

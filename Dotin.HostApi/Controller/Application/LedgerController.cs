@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain;
-using Dotin.HostApi.Domain.Model.Application;
+using Dotin.Share.Dto.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dotin.HostApi.Controller.Application

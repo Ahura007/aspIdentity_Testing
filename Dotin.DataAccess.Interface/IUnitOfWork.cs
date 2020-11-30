@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-
-namespace Dotin.HostApi.DataAccess.Repository.Interface.LedgerDb
+namespace Dotin.DataAccess.Interface
 {
     public interface IUnitOfWork : IDisposable
     {

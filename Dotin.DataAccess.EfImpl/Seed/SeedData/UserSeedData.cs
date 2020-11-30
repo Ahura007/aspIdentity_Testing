@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using Dotin.Share.Dto.Identity;
+using Dotin.Domain.Model.Model.Identity;
 
-namespace Dotin.HostApi.Seed.SeedData
+namespace Dotin.DataAccess.EfImpl.Seed.SeedData
 {
     public class UserSeedData
     {
-        public static List<ApplicationUserDto> CreateUser()
+        public static List<ApplicationUser> CreateUser()
         {
-            var users = new List<ApplicationUserDto>
+            var users = new List<ApplicationUser>
             {
-                new ApplicationUserDto
+                new ApplicationUser
                 {
                     Email = "mehdi_4294@yahoo.com",
                     BirthDate = DateTime.Now.AddYears(-29),
@@ -20,7 +20,7 @@ namespace Dotin.HostApi.Seed.SeedData
                     PhoneNumber = "+989352810284",
                     UserName = "Admin",
                 },
-                new ApplicationUserDto
+                new ApplicationUser
                 {
                     Email = "mehdi_4294@yahoo.com",
                     BirthDate = DateTime.Now.AddYears(-35),

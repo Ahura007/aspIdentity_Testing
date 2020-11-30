@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Dotin.HostApi.Domain.Model.Application;
+﻿using Dotin.Domain.Model.Model.Application;
+using Dotin.Share.Dto.Application;
 
-namespace Dotin.HostApi.Domain.Mapper.Application
+namespace Dotin.Domain.Impl.Mapper.Application
 {
     public class LedgerMapper : AutoMapper.Profile
     {

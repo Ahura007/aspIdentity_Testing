@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Dotin.HostApi.Domain.Model.Application;
+using Dotin.Share.Dto.Application;
 
 namespace Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain
 {

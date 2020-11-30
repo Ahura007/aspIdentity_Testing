@@ -1,10 +1,9 @@
-﻿using Dotin.HostApi.Domain.Model.Application;
+﻿using Dotin.Domain.Model.Model.Application;
 
-namespace Dotin.DataAccess.Interface.Repository.Interface.LedgerDb
+namespace Dotin.DataAccess.Interface.LedgerDb
 {
     public interface ILegerRepository : IGenericRepository<Ledger>
     {
  
-    
     }
 }

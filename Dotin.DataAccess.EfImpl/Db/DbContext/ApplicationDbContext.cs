@@ -1,6 +1,6 @@
 ﻿using Dotin.Domain.Model.Model.Application;
 using Dotin.Domain.Model.Model.Identity;
-using Dotin.HostApi.Domain.Model.Application;
+using Dotin.HostApi.DataAccess.Db.Seed;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

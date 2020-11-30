@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using Dotin.Share.Dto.Identity;
+using Dotin.Domain.Model.Model.Identity;
 
-namespace Dotin.HostApi.Seed.SeedData
+namespace Dotin.DataAccess.EfImpl.Seed.SeedData
 {
     public class RoleSeedData
     {
-        public static List<ApplicationRoleDto> CreateRole()
+        public static List<ApplicationRole> CreateRole()
         {
-            var roles = new List<ApplicationRoleDto>
+            var roles = new List<ApplicationRole>
             {
-                new ApplicationRoleDto
+                new ApplicationRole
                 {
                     CreateDateTime = DateTime.Now,
                     Name = "Admin",
                 },
-                new ApplicationRoleDto
+                new ApplicationRole
                 {
                     CreateDateTime = DateTime.Now,
                     Name = "User",

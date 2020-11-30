@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Dotin.HostApi.Domain.Model.Application.Base;
+using Dotin.Domain.Model.Model.Application;
+using Dotin.Domain.Model.Model.Application.Base;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace Dotin.DataAccess.Interface
 {
@@ -13,43 +15,39 @@ namespace Dotin.DataAccess.Interface
 
         Task AddRangeAsync(IEnumerable<TEntity> entities);
 
-        //TEntity GetById(params object[] keyValues);
+        TEntity GetById(params object[] keyValues);
 
-        //TEntity GetFirstOrDefault(
-        //    Expression<Func<TEntity, bool>> predicate = null,
-        //    Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-        //    Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-        //    bool disableTracking = true
-        //);
+        TEntity GetFirstOrDefault(
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            bool disableTracking = true
+        );
 
-        IQueryable<TEntity> GetAll();
+        Task<List<TEntity>> GetAllAsync();
+        List<TEntity> GetAll();
 
-        //IEnumerable<TEntity> GetMultiple(
-        //    Expression<Func<TEntity, bool>> predicate = null,
-        //    Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-        //    Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-        //    bool disableTracking = true
-        //);
+        IEnumerable<TEntity> GetMultiple(
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            bool disableTracking = true
+        );
 
-        //IQueryable<TEntity> FromSql(string sql, params object[] parameters);
+        IQueryable<TEntity> FromSql(string sql, params object[] parameters);
 
-        //void Update(TEntity entity);
+        void Update(TEntity entity);
 
-        //void Update(IEnumerable<TEntity> entities);
+        void Update(IEnumerable<TEntity> entities);
 
-        //void Delete(object id);
+        void Delete(object id);
 
-        //void Delete(TEntity entityToDelete);
+        void Delete(TEntity entityToDelete);
 
-        //void Delete(IEnumerable<TEntity> entities);
+        void Delete(IEnumerable<TEntity> entities);
 
-        //int Count(Expression<Func<TEntity, bool>> predicate = null);
+        int Count(Expression<Func<TEntity, bool>> predicate = null);
 
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
-
-
-
-
-
     }
 }

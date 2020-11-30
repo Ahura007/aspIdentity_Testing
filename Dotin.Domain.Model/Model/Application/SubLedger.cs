@@ -1,7 +1,6 @@
 ﻿
 
-using Dotin.HostApi.Domain.Model.Application;
-using Dotin.HostApi.Domain.Model.Application.Base;
+using Dotin.Domain.Model.Model.Application.Base;
 
 namespace Dotin.Domain.Model.Model.Application
 {

@@ -1,12 +1,8 @@
-﻿using System.Threading.Tasks;
-using Dotin.DataAccess.EfImpl.Db.IdentityDbContext;
-using Dotin.DataAccess.Interface.Repository.Interface.LedgerDb;
-using Dotin.HostApi.DataAccess.Repository.Interface;
-using Dotin.HostApi.DataAccess.Repository.Interface.LedgerDb;
-using Dotin.HostApi.Domain.Model.Application;
-using Microsoft.EntityFrameworkCore;
+﻿using Dotin.DataAccess.EfImpl.Db.DbContext;
+using Dotin.DataAccess.Interface.LedgerDb;
+using Dotin.Domain.Model.Model.Application;
 
-namespace Dotin.HostApi.DataAccess.Repository.Imp.LedgerDb
+namespace Dotin.DataAccess.EfImpl.Repository.Imp.LedgerDb
 {
     public class LegerRepository : GenericRepository<Ledger>, ILegerRepository
     {

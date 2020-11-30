@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-
-
-namespace Dotin.HostApi.Domain.Model.Application
+﻿namespace Dotin.Share.Dto.Application
 {
     public class SubLedgerDto  
     {

@@ -7,6 +7,7 @@ using Dotin.Domain.Interface.Service.Interface.Identity;
 using Dotin.Domain.Model.Model.Identity;
 using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dotin.Domain.Impl.Service.Imp.Identity
 {

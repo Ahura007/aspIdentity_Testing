@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Dotin.DataAccess.EfImpl.Db.IdentityDbContext;
-using Microsoft.EntityFrameworkCore;
+using Dotin.DataAccess.EfImpl.Db.DbContext;
+using Dotin.DataAccess.Interface;
 
-namespace Dotin.HostApi.DataAccess.Repository.Interface.LedgerDb
+namespace Dotin.DataAccess.EfImpl.Repository.Imp
 {
     public class UnitOfWork : IUnitOfWork , IDisposable  
     {

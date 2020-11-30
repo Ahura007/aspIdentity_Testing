@@ -24,9 +24,8 @@ namespace Dotin.Domain.Impl.Service.Imp.Identity
             _appSettings = appSettings.Value;
         }
 
-        public string GenerateJwtToken(ApplicationUserDto userDto)
+        public string GenerateJwtToken(ApplicationUser user)
         {
-            var user = _mapper.Map<ApplicationUserDto, ApplicationUser>(userDto);
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor

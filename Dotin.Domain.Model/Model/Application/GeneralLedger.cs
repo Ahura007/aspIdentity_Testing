@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Dotin.Domain.Model.Model.Application;
-using Dotin.HostApi.Domain.Model.Application.Base;
+using Dotin.Domain.Model.Model.Application.Base;
 
-namespace Dotin.HostApi.Domain.Model.Application
+namespace Dotin.Domain.Model.Model.Application
 {
     public class GeneralLedger : Entity
     {

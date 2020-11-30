@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotin.DataAccess.Interface"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotin.DataAccess.EfImpl", "Dotin.DataAccess.EfImpl\Dotin.DataAccess.EfImpl.csproj", "{C56BF9E0-E7CD-46BB-BEB3-CBC36F74346A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotin.Infrastructure", "Dotin.Infrastructure\Dotin.Infrastructure.csproj", "{12C802DF-8888-4486-9C66-310DEBFA7BDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{C56BF9E0-E7CD-46BB-BEB3-CBC36F74346A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C56BF9E0-E7CD-46BB-BEB3-CBC36F74346A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C56BF9E0-E7CD-46BB-BEB3-CBC36F74346A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12C802DF-8888-4486-9C66-310DEBFA7BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C802DF-8888-4486-9C66-310DEBFA7BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C802DF-8888-4486-9C66-310DEBFA7BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C802DF-8888-4486-9C66-310DEBFA7BDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{900383F4-DD95-457E-9E16-AB0485AD6FD8} = {9592AD1A-5B77-4AD8-AEB5-BAA28C42C719}
 		{DED15399-AAB3-4CE8-A553-4F5F8434943A} = {946476C0-8BF6-47F9-90F7-31FF36E9800E}
 		{C56BF9E0-E7CD-46BB-BEB3-CBC36F74346A} = {946476C0-8BF6-47F9-90F7-31FF36E9800E}
+		{12C802DF-8888-4486-9C66-310DEBFA7BDF} = {9592AD1A-5B77-4AD8-AEB5-BAA28C42C719}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E68A59D-FB9D-4B7A-B65B-2B00A156177F}

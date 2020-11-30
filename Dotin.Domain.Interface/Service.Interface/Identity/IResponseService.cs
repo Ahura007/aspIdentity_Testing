@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Dotin.Share.Dto.Identity;
 
 namespace Dotin.Domain.Interface.Service.Interface.Identity
