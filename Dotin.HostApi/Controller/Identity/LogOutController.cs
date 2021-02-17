@@ -19,7 +19,7 @@ namespace Dotin.HostApi.Controller.Identity
         }
 
         [HttpPost]
-        public async Task<IActionResult> OnPostAsync(LoginDto loginDto, string returnUrl)
+        public async Task<IActionResult> OnPostAsync(LoginCommand loginCommand, string returnUrl)
         {
             await _logoutService.LogoutAsync();
             if (returnUrl != null)

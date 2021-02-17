@@ -1,11 +1,10 @@
-﻿namespace Dotin.Share.Dto.Application
+﻿namespace Dotin.Share.ViewModel.Application
 {
-    public class SubLedgerDto  
+    public class LedgerViewModel
     {
         public string Code { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
         public bool IsActive { get; set; }
-   
+ 
     }
 }

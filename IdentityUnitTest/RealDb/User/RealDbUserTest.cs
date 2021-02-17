@@ -29,7 +29,7 @@ namespace IdentityUnitTest.RealDb.User
             using (var scope = Factory.Services.CreateScope())
             {
                 var userName = RandomData.StringGenerator();
-                var newUser = new ApplicationUserDto()
+                var newUser = new ApplicationUserCommand()
                 {
                     FirstName = userName,
                     LastName = userName + "i",
@@ -57,7 +57,7 @@ namespace IdentityUnitTest.RealDb.User
             using (var scope = Factory.Services.CreateScope())
             {
                 var userName = RandomData.StringGenerator();
-                var firstUser = new ApplicationUserDto()
+                var firstUser = new ApplicationUserCommand()
                 {
                     FirstName = userName,
                     LastName = userName + "i",
@@ -68,7 +68,7 @@ namespace IdentityUnitTest.RealDb.User
                     UserName = userName,
                     Password = "1",
                 };
-                var secondUser = new ApplicationUserDto()
+                var secondUser = new ApplicationUserCommand()
                 {
                     FirstName = userName,
                     LastName = userName + "i",

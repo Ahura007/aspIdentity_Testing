@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,14 +19,14 @@ namespace Dotin.HostApi.Controller.Identity
         }
 
         [HttpGet]
-        public async Task<ResponseDto<ApplicationRoleDto>> GetAllAsync()
+        public async Task<ResponseDto<ApplicationRoleCommand>> GetAllAsync()
         {
             return await _roleService.GetAllAsync();
         }
 
 
         [HttpPost]
-        public async Task<ResponseDto<ApplicationRoleDto>> CreateAsync(ApplicationRoleDto role)
+        public async Task<ResponseDto<ApplicationRoleCommand>> CreateAsync(ApplicationRoleCommand role)
         {
             return await _roleService.CreateAsync(role);
         }

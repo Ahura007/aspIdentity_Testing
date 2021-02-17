@@ -7,8 +7,8 @@ namespace Dotin.Domain.Impl.Mapper.Application
     {
         public LedgerMapper()
         {
-            CreateMap<Ledger, LedgerDto>();
-            CreateMap<LedgerDto, Ledger>();
+            CreateMap<Ledger, LedgerViewModel>();
+            CreateMap<LedgerViewModel, Ledger>();
         }
     }
 }

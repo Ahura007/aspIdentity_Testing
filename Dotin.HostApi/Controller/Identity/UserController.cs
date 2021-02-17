@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace Dotin.HostApi.Controller.Identity
         }
 
         [HttpPost]
-        public async Task<ResponseDto<ApplicationUserDto>> OnPostAsync(ApplicationUserDto user)
+        public async Task<ResponseDto<ApplicationUserCommand>> OnPostAsync(ApplicationUserCommand user)
         {
             try
             {
@@ -32,7 +33,7 @@ namespace Dotin.HostApi.Controller.Identity
 
 
         [HttpGet]
-        public async Task<ResponseDto<ApplicationUserDto>> GetAllAsync()
+        public async Task<ResponseDto<ApplicationUserCommand>> GetAllAsync()
         {
             return await _userService.GetAllAsync();
         }

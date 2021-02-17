@@ -2,7 +2,7 @@
 
 namespace Dotin.Share.Dto.Identity
 {
-    public class LoginResultDto
+    public class LoginResultCommand
     {
         public string AccessToken { get; set; }
         public SignInResult SignInResult { get; set; }

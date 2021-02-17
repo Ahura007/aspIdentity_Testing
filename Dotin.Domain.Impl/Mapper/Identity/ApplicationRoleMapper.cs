@@ -7,8 +7,8 @@ namespace Dotin.Domain.Impl.Mapper.Identity
     {
         public ApplicationRoleMapper()
         {
-            CreateMap<ApplicationRole, ApplicationRoleDto>();
-            CreateMap<ApplicationRoleDto, ApplicationRole>();
+            CreateMap<ApplicationRole, ApplicationRoleCommand>();
+            CreateMap<ApplicationRoleCommand, ApplicationRole>();
         }
     }
 }

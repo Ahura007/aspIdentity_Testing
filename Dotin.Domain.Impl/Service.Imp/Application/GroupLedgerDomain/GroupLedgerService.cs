@@ -12,19 +12,20 @@ using Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain;
 using Dotin.Domain.Interface.Service.Interface.Identity;
 using Dotin.Domain.Model.Model.Application;
 using Dotin.HostApi.Domain.Helper.Extension;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Application;
 
 namespace Dotin.Domain.Impl.Service.Imp.Application.GroupLedgerDomain
 {
     public class GroupLedgerService : IGroupLedgerService
     {
-        private readonly IResponseService<GroupLedgerDto> _responseService;
+        private readonly IResponseService<GroupLedgerViewModel> _responseService;
         private readonly IGroupLedgerRepository _groupLedgerRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
 
-        public GroupLedgerService(IMapper mapper, IResponseService<GroupLedgerDto> responseService, IUnitOfWork unitOfWork,
+        public GroupLedgerService(IMapper mapper, IResponseService<GroupLedgerViewModel> responseService, IUnitOfWork unitOfWork,
             IGroupLedgerRepository groupLedgerRepository)
         {
 
@@ -34,9 +35,9 @@ namespace Dotin.Domain.Impl.Service.Imp.Application.GroupLedgerDomain
             _mapper = mapper;
         }
 
-        public async Task<ResponseDto<GroupLedgerDto>> AddAsync(GroupLedgerDto groupLedgerDto)
+        public async Task<ResponseDto<GroupLedgerViewModel>> AddAsync(GroupLedgerViewModel groupLedgerViewModel)
         {
-            var groupLedger = _mapper.Map<GroupLedgerDto, GroupLedger>(groupLedgerDto);
+            var groupLedger = _mapper.Map<GroupLedgerViewModel, GroupLedger>(groupLedgerViewModel);
 
 
             try
@@ -45,19 +46,19 @@ namespace Dotin.Domain.Impl.Service.Imp.Application.GroupLedgerDomain
 
                 await _unitOfWork.SaveChangesAsync();
 
-                return _responseService.Response(groupLedgerDto, UserMessage.Success);
+                return _responseService.Response(groupLedgerViewModel, UserMessage.Success);
             }
             catch (Exception e)
             {
                 var lastException = e.GetLastException();
-                return _responseService.Response(groupLedgerDto, lastException.ReturnList(), UserMessage.Failed);
+                return _responseService.Response(groupLedgerViewModel, lastException.ReturnList(), UserMessage.Failed);
             }
         }
 
-        public async Task<List<GroupLedgerDto>> GetAllAsync()
+        public async Task<List<GroupLedgerViewModel>> GetAllAsync()
         {
             var allGroupLedger = await _groupLedgerRepository.GetAllAsync();
-            var allLedgerDto = _mapper.Map<List<GroupLedger>, List<GroupLedgerDto>>(allGroupLedger);
+            var allLedgerDto = _mapper.Map<List<GroupLedger>, List<GroupLedgerViewModel>>(allGroupLedger);
             return allLedgerDto;
         }
     }

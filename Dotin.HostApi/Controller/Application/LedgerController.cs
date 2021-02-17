@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Dotin.DataAccess.EfImpl.Db.DbContext;
 using Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Application;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,14 +21,14 @@ namespace Dotin.HostApi.Controller.Application
         }
 
         [HttpPost]
-        public async Task<ResponseDto<LedgerDto>> PostAsync(LedgerDto ledgerDto)
+        public async Task<ResponseDto<LedgerViewModel>> PostAsync(LedgerViewModel ledgerViewModel)
         {
-            return await _ledgerService.AddAsync(ledgerDto);
+            return await _ledgerService.AddAsync(ledgerViewModel);
         }
 
 
         [HttpGet]
-        public async Task<List<LedgerDto>> GetAllAsync()
+        public async Task<List<LedgerViewModel>> GetAllAsync()
         {
             return await _ledgerService.GetAllAsync();
         }

@@ -7,8 +7,8 @@ namespace Dotin.Domain.Impl.Mapper.Identity
     {
         public ApplicationUserMapper()
         {
-            CreateMap<ApplicationUser, ApplicationUserDto>();
-            CreateMap<ApplicationUserDto, ApplicationUser>();
+            CreateMap<ApplicationUser, ApplicationUserCommand>();
+            CreateMap<ApplicationUserCommand, ApplicationUser>();
         }
     }
 
