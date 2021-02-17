@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dotin.Domain.Interface.Service.Interface.Application.GroupLedgerDomain;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Application;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,15 +20,15 @@ namespace Dotin.HostApi.Controller.Application
 
 
         [HttpPost]
-        public async Task<ResponseDto<GroupLedgerDto>> PostAsync(GroupLedgerDto groupLedgerDto)
+        public async Task<ResponseDto<GroupLedgerViewModel>> PostAsync(GroupLedgerViewModel groupLedgerViewModel)
         {
-            return await _groupLedgerService.AddAsync(groupLedgerDto);
+            return await _groupLedgerService.AddAsync(groupLedgerViewModel);
         }
 
 
 
         [HttpGet]
-        public async Task<List<GroupLedgerDto>> GetAllAsync()
+        public async Task<List<GroupLedgerViewModel>> GetAllAsync()
         {
             return await _groupLedgerService.GetAllAsync();
         }

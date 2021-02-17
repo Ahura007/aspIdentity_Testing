@@ -10,19 +10,20 @@ using Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain;
 using Dotin.Domain.Interface.Service.Interface.Identity;
 using Dotin.Domain.Model.Model.Application;
 using Dotin.HostApi.Domain.Helper.Extension;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Application;
 
 namespace Dotin.Domain.Impl.Service.Imp.Application.LedgerDomain
 {
     public class LedgerService : ILedgerService
     {
-        private readonly IResponseService<LedgerDto> _responseService;
+        private readonly IResponseService<LedgerViewModel> _responseService;
         private readonly ILegerRepository _legerRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
 
-        public LedgerService(ILegerRepository legerRepository, IMapper mapper, IResponseService<LedgerDto> responseService, IUnitOfWork unitOfWork)
+        public LedgerService(ILegerRepository legerRepository, IMapper mapper, IResponseService<LedgerViewModel> responseService, IUnitOfWork unitOfWork)
         {
             _legerRepository = legerRepository;
             _responseService = responseService;
@@ -30,19 +31,19 @@ namespace Dotin.Domain.Impl.Service.Imp.Application.LedgerDomain
             _mapper = mapper;
         }
 
-        public async Task<ResponseDto<LedgerDto>> AddAsync(LedgerDto ledgerDto)
+        public async Task<ResponseDto<LedgerViewModel>> AddAsync(LedgerViewModel ledgerViewModel)
         {
 
-            var ledger = _mapper.Map<LedgerDto, Ledger>(ledgerDto);
+            var ledger = _mapper.Map<LedgerViewModel, Ledger>(ledgerViewModel);
 
             var duplicateCode = await _legerRepository.ExistsAsync(c => c.Code == ledger.Code);
             if (duplicateCode)
-                return _responseService.Response(ledgerDto, UserMessage.Duplicated);
+                return _responseService.Response(ledgerViewModel, UserMessage.Duplicated);
 
 
             var duplicateTitle = await _legerRepository.ExistsAsync(c => c.Title == ledger.Title);
             if (duplicateTitle)
-                return _responseService.Response(ledgerDto, UserMessage.Duplicated);
+                return _responseService.Response(ledgerViewModel, UserMessage.Duplicated);
 
 
             try
@@ -51,27 +52,27 @@ namespace Dotin.Domain.Impl.Service.Imp.Application.LedgerDomain
 
                 await _unitOfWork.SaveChangesAsync();
 
-                return _responseService.Response(ledgerDto, UserMessage.Success);
+                return _responseService.Response(ledgerViewModel, UserMessage.Success);
             }
             catch (Exception e)
             {
                 var lastException = e.GetLastException().ReturnList();
-                return _responseService.Response(ledgerDto, lastException, UserMessage.Failed);
+                return _responseService.Response(ledgerViewModel, lastException, UserMessage.Failed);
             }
         }
 
-        public async Task<List<LedgerDto>> GetAllAsync()
+        public async Task<List<LedgerViewModel>> GetAllAsync()
         {
             var allLedger = await _legerRepository.GetAllAsync();
-            var allLedgerDto = _mapper.Map<List<Ledger>, List<LedgerDto>>(allLedger);
+            var allLedgerDto = _mapper.Map<List<Ledger>, List<LedgerViewModel>>(allLedger);
             return allLedgerDto;
         }
 
 
-        public  async Task<LedgerDto> GetByIdAsync(params object[] keyValues)
+        public  async Task<LedgerViewModel> GetByIdAsync(params object[] keyValues)
         {
             var ledger = await _legerRepository.GetByIdAsync(keyValues);
-            var ledgerDto = _mapper.Map<Ledger, LedgerDto>(ledger);
+            var ledgerDto = _mapper.Map<Ledger, LedgerViewModel>(ledger);
             return ledgerDto;
         }
     }

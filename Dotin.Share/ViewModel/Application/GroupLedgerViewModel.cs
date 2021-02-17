@@ -1,6 +1,6 @@
-﻿namespace Dotin.Share.Dto.Application
+﻿namespace Dotin.Share.ViewModel.Application
 {
-    public class GroupLedgerDto
+    public class GroupLedgerViewModel
     {
         public string Code { get; set; }
         public string Title { get; set; }

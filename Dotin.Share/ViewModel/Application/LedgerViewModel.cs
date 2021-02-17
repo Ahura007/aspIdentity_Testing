@@ -1,6 +1,6 @@
-﻿namespace Dotin.Share.Dto.Application
+﻿namespace Dotin.Share.ViewModel.Application
 {
-    public class LedgerDto
+    public class LedgerViewModel
     {
         public string Code { get; set; }
         public string Title { get; set; }

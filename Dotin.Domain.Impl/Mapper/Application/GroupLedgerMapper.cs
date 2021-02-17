@@ -7,8 +7,8 @@ namespace Dotin.Domain.Impl.Mapper.Application
     {
         public GroupLedgerMapper()
         {
-            CreateMap<GroupLedger, GroupLedgerDto>();
-            CreateMap<GroupLedgerDto, GroupLedger>();
+            CreateMap<GroupLedger, GroupLedgerViewModel>();
+            CreateMap<GroupLedgerViewModel, GroupLedger>();
         }
     }
 }
