@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
+using Dotin.DataAccess.EfImpl.Db.DbContext;
+using Dotin.DataAccess.EfImpl.Repository.Imp.LedgerDb;
 using Dotin.DataAccess.Interface;
 using Dotin.DataAccess.Interface.LedgerDb;
 using Dotin.Domain.Impl.Helper;
@@ -93,5 +96,21 @@ namespace IdentityUnitTest.RealDb.LedgerDomain
                 result.ApplicationMessage.Should().BeEquivalentTo(UserMessage.Duplicated);
             }
         }
+
+
+
+        [Fact]
+        public async void Get_All_Ledger_Repository()
+        {
+            using (var scope = Factory.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetService<ApplicationDbContext>();
+                var legerRepo = new LegerRepository(db);
+                var all= await legerRepo.GetAllAsync();
+            }
+        }
+
+
+    
     }
 }

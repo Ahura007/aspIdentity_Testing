@@ -37,12 +37,12 @@ namespace Dotin.Domain.Impl.Service.Imp.Application.LedgerDomain
 
             var duplicateCode = await _legerRepository.ExistsAsync(c => c.Code == ledger.Code);
             if (duplicateCode)
-                return _responseService.Response(ledgerDto,  UserMessage.Duplicated);
+                return _responseService.Response(ledgerDto, UserMessage.Duplicated);
 
 
             var duplicateTitle = await _legerRepository.ExistsAsync(c => c.Title == ledger.Title);
             if (duplicateTitle)
-                throw new DuplicateException(UserMessage.Duplicated + " Title");
+                return _responseService.Response(ledgerDto, UserMessage.Duplicated);
 
 
             try
@@ -55,8 +55,8 @@ namespace Dotin.Domain.Impl.Service.Imp.Application.LedgerDomain
             }
             catch (Exception e)
             {
-                var lastException = e.GetLastException();
-                return _responseService.Response(ledgerDto, lastException.ReturnList(), UserMessage.Failed);
+                var lastException = e.GetLastException().ReturnList();
+                return _responseService.Response(ledgerDto, lastException, UserMessage.Failed);
             }
         }
 
@@ -65,6 +65,14 @@ namespace Dotin.Domain.Impl.Service.Imp.Application.LedgerDomain
             var allLedger = await _legerRepository.GetAllAsync();
             var allLedgerDto = _mapper.Map<List<Ledger>, List<LedgerDto>>(allLedger);
             return allLedgerDto;
+        }
+
+
+        public  async Task<LedgerDto> GetByIdAsync(params object[] keyValues)
+        {
+            var ledger = await _legerRepository.GetByIdAsync(keyValues);
+            var ledgerDto = _mapper.Map<Ledger, LedgerDto>(ledger);
+            return ledgerDto;
         }
     }
 }

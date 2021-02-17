@@ -35,9 +35,15 @@ namespace Dotin.DataAccess.EfImpl.Repository.Imp
         }
 
 
-        public virtual TEntity GetById(params object[] keyValues)
+        public virtual async Task<TEntity> GetByIdAsync(params object[] keyValues)
         {
-            return DbSet.Find(keyValues);
+            return await DbSet.FindAsync(keyValues);
+        }
+
+
+        public virtual  TEntity GetById(params object[] keyValues)
+        {
+            return  DbSet.Find(keyValues);
         }
 
         public virtual TEntity GetFirstOrDefault(
@@ -118,8 +124,7 @@ namespace Dotin.DataAccess.EfImpl.Repository.Imp
 
         public virtual IQueryable<TEntity> FromSql(string sql, params object[] parameters)
         {
-            // return _dbSet.FromSql(sql, parameters);
-            return null;
+             return DbSet.FromSqlRaw(sql, parameters);
         }
 
 

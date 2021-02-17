@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Dotin.Share\Dotin.Share.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extension\" />
+  </ItemGroup>
+
 </Project>

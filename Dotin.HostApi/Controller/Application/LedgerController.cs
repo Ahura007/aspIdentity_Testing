@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dotin.DataAccess.EfImpl.Db.DbContext;
 using Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain;
 using Dotin.Share.Dto.Application;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Dotin.HostApi.Controller.Application
 {
@@ -29,5 +31,8 @@ namespace Dotin.HostApi.Controller.Application
         {
             return await _ledgerService.GetAllAsync();
         }
+
+
+
     }
 }

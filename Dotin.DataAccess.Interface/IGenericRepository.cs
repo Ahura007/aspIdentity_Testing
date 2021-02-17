@@ -15,6 +15,7 @@ namespace Dotin.DataAccess.Interface
 
         Task AddRangeAsync(IEnumerable<TEntity> entities);
 
+        Task<TEntity> GetByIdAsync(params object[] keyValues);
         TEntity GetById(params object[] keyValues);
 
         TEntity GetFirstOrDefault(

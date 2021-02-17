@@ -8,6 +8,7 @@ namespace Dotin.Domain.Interface.Service.Interface.Application.LedgerDomain
     {
         Task<ResponseDto<LedgerDto>> AddAsync(LedgerDto ledgerDto);
         Task<List<LedgerDto>> GetAllAsync();
+        Task<LedgerDto> GetByIdAsync(params object[] keyValues);
 
     }
 }
