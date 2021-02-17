@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Dotin.Share.Dto.Identity
 {
-    public class ApplicationUserDto
+    public class ApplicationUserCommand
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Dotin.Share.Dto.Identity
 {
-    public class LoginDto
+    public class LoginCommand
     {
         public string Username { get; set; }
         public string Password { get; set; }

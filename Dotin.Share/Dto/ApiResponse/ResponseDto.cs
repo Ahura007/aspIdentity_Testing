@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Dotin
+namespace Dotin.Share.Dto.ApiResponse
 {
     public class ResponseDto<T>
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Identity;
 
 namespace Dotin.Domain.Interface.Service.Interface.Identity

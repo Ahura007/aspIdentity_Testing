@@ -38,14 +38,14 @@ namespace IdentityUnitTest.RealDb.LedgerDomain
             using (var scope = Factory.Services.CreateScope())
             {
                 var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
-                var responseService = scope.ServiceProvider.GetRequiredService<IResponseService<LedgerDto>>();
-                var ledgerDto = new LedgerDto
+                var responseService = scope.ServiceProvider.GetRequiredService<IResponseService<LedgerViewModel>>();
+                var ledgerDto = new LedgerViewModel
                 {
                     Code = RandomData.IntGenerate().ToString(),
                     Title = RandomData.StringGenerator(),
                     IsActive = true
                 };
-                var ledger = mapper.Map<LedgerDto, Ledger>(ledgerDto);
+                var ledger = mapper.Map<LedgerViewModel, Ledger>(ledgerDto);
                 var legerRepositoryMock = new Mock<ILegerRepository>();
 
                 var unitOfWorkMock = new Mock<IUnitOfWork>();
@@ -70,8 +70,8 @@ namespace IdentityUnitTest.RealDb.LedgerDomain
             using (var scope = Factory.Services.CreateScope())
             {
                 var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
-                var responseService = scope.ServiceProvider.GetRequiredService<IResponseService<LedgerDto>>();
-                var ledgerDto = new LedgerDto
+                var responseService = scope.ServiceProvider.GetRequiredService<IResponseService<LedgerViewModel>>();
+                var ledgerDto = new LedgerViewModel
                 {
                     Code = RandomData.IntGenerate().ToString(),
                     Title = RandomData.StringGenerator(),

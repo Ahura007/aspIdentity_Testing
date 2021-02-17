@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Dotin.Domain.Interface.Service.Interface.Identity;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace Dotin.HostApi.Controller.Identity
 
 
         [HttpPost]
-        public async Task<ResponseDto<ApplicationUserDto>> OnPostAsync(AddUserRoleDto model)
+        public async Task<ResponseDto<ApplicationUserCommand>> OnPostAsync(AddUserRoleCommand model)
         {
             return await _userRoleService.UserRoleAsync(model);
         }

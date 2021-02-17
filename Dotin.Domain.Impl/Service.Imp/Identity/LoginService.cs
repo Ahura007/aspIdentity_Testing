@@ -2,6 +2,7 @@
 using Dotin.Domain.Impl.Helper;
 using Dotin.Domain.Interface.Service.Interface.Identity;
 using Dotin.Domain.Model.Model.Identity;
+using Dotin.Share.Dto.ApiResponse;
 using Dotin.Share.Dto.Identity;
 using Microsoft.AspNetCore.Identity;
 
@@ -12,9 +13,9 @@ namespace Dotin.Domain.Impl.Service.Imp.Identity
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ITokenService _tokenService;
-        private readonly IResponseService<LoginResultDto> _responseService;
+        private readonly IResponseService<LoginResultCommand> _responseService;
 
-        public LoginService(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ITokenService tokenService, IResponseService<LoginResultDto> responseService)
+        public LoginService(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ITokenService tokenService, IResponseService<LoginResultCommand> responseService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -22,14 +23,14 @@ namespace Dotin.Domain.Impl.Service.Imp.Identity
             _responseService = responseService;
         }
 
-        public async Task<ResponseDto<LoginResultDto>> LoginAsync(LoginDto loginDto)
+        public async Task<ResponseDto<LoginResultCommand>> LoginAsync(LoginCommand loginCommand)
         {
-            var response = new LoginResultDto();
-            response.SignInResult = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, loginDto.RememberMe, true);
+            var response = new LoginResultCommand();
+            response.SignInResult = await _signInManager.PasswordSignInAsync(loginCommand.Username, loginCommand.Password, loginCommand.RememberMe, true);
 
             if (response.SignInResult.Succeeded)
             {
-                var user = await _userManager.FindByNameAsync(loginDto.Username);
+                var user = await _userManager.FindByNameAsync(loginCommand.Username);
                 response.AccessToken = _tokenService.GenerateJwtToken(user);
                 response.ReturnUrl = "redirect home";
                 return _responseService.Response(response, UserMessage.SuccessLogin);
